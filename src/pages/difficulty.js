@@ -31,7 +31,7 @@ const Difficulty = () => {
   useEffect(() => {
     setDifficulty("");
     setCategory({ id: "", name: "" });
-  }, []);
+  }, [setCategory, setDifficulty]);
 
   // code to save Difficulty and category in global context
   const handleDifficultySelect = (event) => {
