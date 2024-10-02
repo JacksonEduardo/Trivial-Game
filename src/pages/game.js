@@ -12,6 +12,8 @@ const Game = () => {
   const [score, setScore] = useState(0);
   const [confirmedAnswers, setConfirmedAnswers] = useState([]);
   const [msgResult, setMsgResult] = useState([]); // create stato to use like a condition to see or not a componente card o message
+  const [openPopup, setOpenPopup] = useState();
+  const [disableBtn, setDisableBtn] = useState(true);
 
   // function to mix the answer
   const shuffleArray = (array) => {
@@ -35,6 +37,7 @@ const Game = () => {
         };
       });
       setData(decodedQuestions);
+      setDisableBtn(false);
       console.log(decodedQuestions);
     } catch (error) {
       console.log("Error during fetching data with questions", error);
@@ -90,15 +93,39 @@ const Game = () => {
       return newConfirmed;
     });
   };
+
+  useEffect(() => {
+    let popup = null;
+    if (
+      confirmedAnswers.length > 0 &&
+      confirmedAnswers.every((answer) => answer === true)
+    ) {
+      popup = true;
+    }
+    setOpenPopup(popup);
+  }, [confirmedAnswers]);
+
   return (
     <main>
+      {openPopup && (
+        <div className="popup">
+          <p>Final Result</p>
+
+          <p>{score} answer correct out of 10</p>
+          <h3>Do you want to save your score?</h3>
+          <button>Save and Publish</button>
+        </div>
+      )}
       <section>
         <h1>{playerName}</h1>
         <h1>{difficulty}</h1>
         <h1>{category.name}</h1>
         <h1>Are you ready?</h1>
-        <button onClick={fetchDataQuestion}>Start!</button>
-
+        {disableBtn && (
+          <button className="btn" onClick={fetchDataQuestion}>
+            Start!
+          </button>
+        )}
         {mixedData &&
           mixedData.map((el, index) => {
             return (
@@ -132,11 +159,6 @@ const Game = () => {
               </div>
             );
           })}
-      </section>
-      <p>{score}</p>
-      <section>
-        <h3>Do you want to save your score?</h3>
-        <button>Save and Publish</button>
       </section>
     </main>
   );
