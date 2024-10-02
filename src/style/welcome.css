@@ -1,3 +1,31 @@
-h1 {
-  background-color: chartreuse;
+.welcomeContainer {
+  width: 100%;
+  height: 100vh;
+  background-color: cadetblue;
+  position: relative;
+}
+.welcomeSection {
+  width: 100%;
+  height: 300px;
+  background-color: aqua;
+}
+.themeContainer {
+  width: 100px;
+  height: 50px;
+  background-color: coral;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+}
+
+.popupContainer {
+  width: 300px;
+  height: 300px;
+  background-color: burlywood;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
 }

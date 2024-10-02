@@ -7,6 +7,8 @@ const GameContext = createContext();
 export const GameProvider = ({ children }) => {
   const [playerName, setPlayerName] = useState("");
   const [score, setScore] = useState(0);
+  const [difficulty, setDifficulty] = useState("");
+  const [category, setCategory] = useState("");
 
   //   upload the name if it exists in localStorage
   useEffect(() => {
@@ -25,7 +27,16 @@ export const GameProvider = ({ children }) => {
 
   return (
     <GameContext.Provider
-      value={{ playerName, setPlayerName, score, setScore }}
+      value={{
+        playerName,
+        setPlayerName,
+        score,
+        setScore,
+        difficulty,
+        setDifficulty,
+        category,
+        setCategory,
+      }}
     >
       {children}
     </GameContext.Provider>
