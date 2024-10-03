@@ -151,6 +151,7 @@ const Game = () => {
                     );
                   })}
                 <button
+                  className="btn"
                   onClick={() => checkAnswer(index, el.correct_answer)}
                   disabled={confirmedAnswers[index]}
                 >

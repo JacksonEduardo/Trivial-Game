@@ -82,7 +82,9 @@ const Difficulty = () => {
           <option value="medium">Medium</option>
           <option value="hard">Hard</option>
         </select>
-        <button onClick={handleStartGame}>Enjoy the game</button>
+        <button className="btn" onClick={handleStartGame}>
+          Enjoy the game
+        </button>
         <section>
           <h2>Do you want to try random mode?</h2>
           <button>Yess, I'm a Genious</button>

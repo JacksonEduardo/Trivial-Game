@@ -14,7 +14,9 @@
 }
 .card {
   width: 80%;
-  height: 200px;
+  min-height: 200px;
+  padding: 10px;
+  max-height: fit-content;
   background-color: bisque;
   margin: 20px auto;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.177);

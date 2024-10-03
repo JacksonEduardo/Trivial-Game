@@ -52,7 +52,9 @@ const Welcome = () => {
           required
           maxLength={20}
         />
-        <button onClick={handleStart}>Start</button>
+        <button className="btn" onClick={handleStart}>
+          Start
+        </button>
         {popup && (
           <div className="popupContainer">
             <button onClick={night}>NIGHT</button>
