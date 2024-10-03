@@ -14,6 +14,7 @@ const Game = () => {
   const [msgResult, setMsgResult] = useState([]); // create stato to use like a condition to see or not a componente card o message
   const [openPopup, setOpenPopup] = useState();
   const [disableBtn, setDisableBtn] = useState(true);
+  const [resultCongratulation, setResultCongratulation] = useState("");
 
   // function to mix the answer
   const shuffleArray = (array) => {
@@ -69,13 +70,30 @@ const Game = () => {
     }));
   };
 
-  console.log(selectedAnswer);
+  //   console.log(selectedAnswer);
 
   const checkAnswer = (questionIndex, correctAnswer) => {
     const selected = selectedAnswer[questionIndex];
     let result = selected === correctAnswer;
     if (result) {
       setScore((prevScore) => prevScore + 1);
+    }
+
+    if (score === 0) {
+      setResultCongratulation("No COMMENT! 0");
+    } else if (score === 10) {
+      setResultCongratulation("GOOD JOB! 10");
+    } else if (score > 0 && score <= 3) {
+      setResultCongratulation("Back to school 0 - 3");
+    } else if (score >= 3 && score <= 6) {
+      setResultCongratulation("You need more general culture 3 - 6");
+    } else if (score >= 6 && score <= 8) {
+      setResultCongratulation("Good job! 6 - 8");
+    }
+    let test = true;
+
+    if (score === 10 && test === true) {
+      setResultCongratulation("You're a MASTER of Trivial Game!");
     }
 
     // function to see if answer is incorrect
@@ -89,7 +107,7 @@ const Game = () => {
     setConfirmedAnswers((prev) => {
       const newConfirmed = [...prev];
       newConfirmed[questionIndex] = true; // check the question like a confirmation
-      console.log(newConfirmed);
+      //   console.log(newConfirmed);
       return newConfirmed;
     });
   };
@@ -109,11 +127,20 @@ const Game = () => {
     <main>
       {openPopup && (
         <div className="popup">
+          <h1>{playerName}</h1>
           <p>Final Result</p>
 
+          <h3>{difficulty}</h3>
+          <h3>{category.name}</h3>
+          <h4>{resultCongratulation}</h4>
           <p>{score} answer correct out of 10</p>
           <h3>Do you want to save your score?</h3>
           <button>Save and Publish</button>
+          <p>Are you sure you want to publish with this name?</p>
+          <p>
+            If the name is not appropriate, the administrator may delete your
+            game
+          </p>
         </div>
       )}
       <section>
@@ -150,6 +177,7 @@ const Game = () => {
                       </div>
                     );
                   })}
+
                 <button
                   className="btn"
                   onClick={() => checkAnswer(index, el.correct_answer)}

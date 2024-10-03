@@ -10,20 +10,42 @@ export const GameProvider = ({ children }) => {
   const [difficulty, setDifficulty] = useState("");
   const [category, setCategory] = useState("");
 
-  //   upload the name if it exists in localStorage
+  // SAVE in the localStorage
   useEffect(() => {
+    // Name
+    if (playerName) {
+      localStorage.setItem("playerName", playerName);
+    }
+    // Difficulty
+    if (difficulty) {
+      localStorage.setItem("difficulty", difficulty);
+    }
+    if (category) {
+      localStorage.setItem("category", JSON.stringify(category)); // convert to string
+    }
+  }, [playerName, difficulty, category]);
+
+  // UPLOAD if  exists in localStorage
+  useEffect(() => {
+    // Name
     const storedName = localStorage.getItem("playerName");
     if (storedName) {
       setPlayerName(storedName);
     }
-  }, []);
 
-  // save the name in localStorage
-  useEffect(() => {
-    if (playerName) {
-      localStorage.setItem("playerName", playerName);
+    // Difficulty
+    const storedDifficulty = localStorage.getItem("difficulty");
+    if (storedDifficulty) {
+      setDifficulty(storedDifficulty);
     }
-  }, [playerName]);
+
+    // Category
+    const storedCategory = localStorage.getItem("category");
+    if (storedCategory) {
+      setCategory(JSON.parse(storedCategory)); // convert to object when upload
+    }
+  }, []);
+  console.log(category);
 
   return (
     <GameContext.Provider
