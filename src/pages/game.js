@@ -5,7 +5,7 @@ import axios from "axios";
 import he from "he";
 
 const Game = () => {
-  const { playerName, difficulty, category } = useGameContext();
+  const { playerName, difficulty, category, randomMode } = useGameContext();
   const [data, setData] = useState([]);
   const [mixedData, setMixedData] = useState([]);
   const [selectedAnswer, setSelectedAnswer] = useState({});
@@ -72,28 +72,14 @@ const Game = () => {
 
   //   console.log(selectedAnswer);
 
+  // let test = 10;
+  // const testRandom = false;
+
   const checkAnswer = (questionIndex, correctAnswer) => {
     const selected = selectedAnswer[questionIndex];
     let result = selected === correctAnswer;
     if (result) {
       setScore((prevScore) => prevScore + 1);
-    }
-
-    if (score === 0) {
-      setResultCongratulation("No COMMENT! 0");
-    } else if (score === 10) {
-      setResultCongratulation("GOOD JOB! 10");
-    } else if (score > 0 && score <= 3) {
-      setResultCongratulation("Back to school 0 - 3");
-    } else if (score >= 3 && score <= 6) {
-      setResultCongratulation("You need more general culture 3 - 6");
-    } else if (score >= 6 && score <= 8) {
-      setResultCongratulation("Good job! 6 - 8");
-    }
-    let test = true;
-
-    if (score === 10 && test === true) {
-      setResultCongratulation("You're a MASTER of Trivial Game!");
     }
 
     // function to see if answer is incorrect
@@ -123,15 +109,40 @@ const Game = () => {
     setOpenPopup(popup);
   }, [confirmedAnswers]);
 
+  // ----------------------------
+  if (openPopup) {
+    if (score === 0) {
+      // setResultCongratulation("No COMMENT! 0");
+      console.log("No COMMENT! 0");
+    } else if (score === 10 && randomMode === true) {
+      // setResultCongratulation("You're a MASTER of Trivial Game!");
+      console.log("You're a MASTER of Trivial Game!");
+    } else if (score > 0 && score <= 3) {
+      // setResultCongratulation("Back to school 0 - 3");
+      console.log("back to school 0 - 3");
+    } else if (score >= 3 && score <= 6) {
+      // setResultCongratulation("You need more general culture 3 - 6");
+      console.log("You need more general culture 3 - 6");
+    } else if (score >= 6 && score <= 8) {
+      // setResultCongratulation("Good job! 6 - 8");
+      console.log("Good job! 6 - 8");
+    } else if (score === 9) {
+      console.log("GOOD GOOD JOB! 9");
+    } else if (score === 10 && randomMode === false) {
+      console.log("GOOD JOB TOP! 10/10");
+    }
+  }
+  // --------------------------------
   return (
     <main>
       {openPopup && (
         <div className="popup">
+          {randomMode && <h1>Random mode </h1>}
           <h1>{playerName}</h1>
           <p>Final Result</p>
-
           <h3>{difficulty}</h3>
           <h3>{category.name}</h3>
+          <h3>setResultCongratulation</h3>
           <h4>{resultCongratulation}</h4>
           <p>{score} answer correct out of 10</p>
           <h3>Do you want to save your score?</h3>
@@ -144,6 +155,8 @@ const Game = () => {
         </div>
       )}
       <section>
+        {randomMode && <h1>Random mode </h1>}
+        <p>{score} answer correct out of 10</p>
         <h1>{playerName}</h1>
         <h1>{difficulty}</h1>
         <h1>{category.name}</h1>

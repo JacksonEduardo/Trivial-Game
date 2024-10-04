@@ -3,6 +3,10 @@
   margin: 0;
   padding: 0;
 }
+:root {
+  --bgBody: rgb(3, 23, 0);
+  --text: rgb(200, 184, 0);
+}
 .btn {
   width: 100px;
   height: 30px;

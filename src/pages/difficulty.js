@@ -5,8 +5,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Difficulty = () => {
-  const { playerName, setDifficulty, setCategory, difficulty, category } =
-    useGameContext(); // acces to the name
+  const {
+    playerName,
+    setDifficulty,
+    setCategory,
+    difficulty,
+    category,
+    setRandomMode,
+  } = useGameContext(); // acces to the name
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
@@ -56,6 +62,7 @@ const Difficulty = () => {
     } else {
       alert("Please select both a category and a difficulty level.");
     }
+    setRandomMode(false);
   };
 
   // code to save in global context when select random mode
@@ -80,6 +87,9 @@ const Difficulty = () => {
     // set random difficulty
     setDifficulty(randomDifficulty);
     console.log(difficulty);
+
+    // Set Random mode in global context to mix with score
+    setRandomMode(true);
 
     navigate("/game");
     return { randomNumber, randomDifficulty };

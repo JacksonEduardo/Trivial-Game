@@ -5,10 +5,11 @@ const GameContext = createContext();
 
 // Create the Provider for context
 export const GameProvider = ({ children }) => {
-  const [playerName, setPlayerName] = useState("");
-  const [score, setScore] = useState(0);
-  const [difficulty, setDifficulty] = useState("");
-  const [category, setCategory] = useState("");
+  const [playerName, setPlayerName] = useState(""); // to use number in al application
+  const [score, setScore] = useState(0); // to use score in All aplication (not in use)
+  const [difficulty, setDifficulty] = useState(""); // difficulty easy medium hard
+  const [category, setCategory] = useState(""); // to use category in all application
+  const [randomMode, setRandomMode] = useState(false); //
 
   // SAVE in the localStorage
   useEffect(() => {
@@ -58,6 +59,8 @@ export const GameProvider = ({ children }) => {
         setDifficulty,
         category,
         setCategory,
+        randomMode,
+        setRandomMode,
       }}
     >
       {children}

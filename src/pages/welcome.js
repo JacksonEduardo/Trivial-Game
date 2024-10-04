@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { useGameContext } from "../logic/globalContext"; // import the constext to save the date
 import { night, day, auto } from "../logic/theme";
+
 const Welcome = () => {
   const [popup, setPopup] = useState(false);
-  const { setPlayerName } = useGameContext(); // acces to use context by useGameContext()
+  const { setPlayerName, score } = useGameContext(); // acces to use context by useGameContext()
   const [name, setName] = useState("");
   const navigate = useNavigate();
 
@@ -39,10 +40,12 @@ const Welcome = () => {
       <div className="themeContainer" onClick={openPopup}>
         <button>Black</button>
         <button>White</button>
+        <p>{score}</p>
       </div>
       <div>
         <h1>Welcome in Trivial Game</h1>
       </div>
+      <div className="line">{/* empty, only to draw line */}</div>
       <section className="welcomeSection">
         <h2>Insert your name</h2>
         <input
