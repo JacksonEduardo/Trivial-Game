@@ -110,28 +110,33 @@ const Game = () => {
   }, [confirmedAnswers]);
 
   // ----------------------------
-  if (openPopup) {
-    if (score === 0) {
-      // setResultCongratulation("No COMMENT! 0");
-      console.log("No COMMENT! 0");
-    } else if (score === 10 && randomMode === true) {
-      // setResultCongratulation("You're a MASTER of Trivial Game!");
-      console.log("You're a MASTER of Trivial Game!");
-    } else if (score > 0 && score <= 3) {
-      // setResultCongratulation("Back to school 0 - 3");
-      console.log("back to school 0 - 3");
-    } else if (score >= 3 && score <= 6) {
-      // setResultCongratulation("You need more general culture 3 - 6");
-      console.log("You need more general culture 3 - 6");
-    } else if (score >= 6 && score <= 8) {
-      // setResultCongratulation("Good job! 6 - 8");
-      console.log("Good job! 6 - 8");
-    } else if (score === 9) {
-      console.log("GOOD GOOD JOB! 9");
-    } else if (score === 10 && randomMode === false) {
-      console.log("GOOD JOB TOP! 10/10");
+  // * Without useEffect Too many renders
+  useEffect(() => {
+    if (openPopup) {
+      if (score === 0) {
+        setResultCongratulation("No COMMENT! 0");
+        console.log("No COMMENT! 0");
+      } else if (score === 10 && randomMode === true) {
+        setResultCongratulation("You're a MASTER of Trivial Game!");
+        console.log("You're a MASTER of Trivial Game!");
+      } else if (score > 0 && score <= 3) {
+        setResultCongratulation("Back to school 0 - 3");
+        console.log("back to school 0 - 3");
+      } else if (score >= 3 && score <= 6) {
+        setResultCongratulation("You need more general culture 3 - 6");
+        console.log("You need more general culture 3 - 6");
+      } else if (score >= 6 && score <= 8) {
+        setResultCongratulation("Good job! 6 - 8");
+        console.log("Good job! 6 - 8");
+      } else if (score === 9) {
+        console.log("GOOD GOOD JOB! 9");
+        setResultCongratulation("GOOD DOOD JOB! 9");
+      } else if (score === 10 && randomMode === false) {
+        console.log("GOOD JOB TOP! 10/10");
+        setResultCongratulation("GOOD JOB! 10/10");
+      }
     }
-  }
+  }, [openPopup, score, randomMode]);
   // --------------------------------
   return (
     <main>
