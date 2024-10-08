@@ -1,47 +1,36 @@
 import "../style/welcome.css";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { useGameContext } from "../logic/globalContext"; // import the constext to save the date
+import { useGameContext } from "../logic/globalContext";
 import { night, day, auto } from "../logic/theme";
-// import dependecies of firebase
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 
 const Welcome = () => {
   const [popup, setPopup] = useState(false);
-  const { setPlayerName, score } = useGameContext(); // acces to use context by useGameContext()
+  const { setPlayerName, score } = useGameContext();
   const [name, setName] = useState("");
   const navigate = useNavigate();
   const [scores, setScores] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // select the name of user
   const playerName = (event) => {
-    setName(event.target.value.toLocaleUpperCase());
+    setName(event.target.value.toUpperCase());
   };
 
-  //save the name in global context
   const handleStart = () => {
     if (name.trim() !== "") {
-      setPlayerName(name); // save the name in the context
+      setPlayerName(name);
       navigate("/difficulty");
     } else {
-      alert("please insert your name to continue");
+      alert("Please insert your name to continue");
     }
   };
 
-  // function to open and close popup
-  const openPopup = () => {
-    setPopup(true);
-    console.log("premuto per aprire");
-  };
-  const closePopup = () => {
-    setPopup(false);
-    console.log("premuto per chiudere");
-  };
+  const openPopup = () => setPopup(true);
+  const closePopup = () => setPopup(false);
 
-  // code to import data from firebase
   useEffect(() => {
     const fetchScores = async () => {
       try {
@@ -55,7 +44,7 @@ const Welcome = () => {
         console.log(scoreList);
       } catch (e) {
         setError("Error importing data");
-        console.log("Errore durante il recupero dei punteggi", e);
+        console.log("Error fetching scores", e);
       } finally {
         setLoading(false);
       }
@@ -63,8 +52,9 @@ const Welcome = () => {
     fetchScores();
   }, []);
 
-  if (loading) return <p>Caricamento...</p>;
+  if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
+
   return (
     <main className="welcomeContainer">
       <div className="themeContainer" onClick={openPopup}>
@@ -73,9 +63,9 @@ const Welcome = () => {
         <p>{score}</p>
       </div>
       <div>
-        <h1>Welcome in Trivial Game</h1>
+        <h1>Welcome to Trivial Game</h1>
       </div>
-      <div className="line">{/* empty, only to draw line */}</div>
+      <div className="line" />
       <section className="welcomeSection">
         <h2>Insert your name</h2>
         <input
@@ -93,15 +83,15 @@ const Welcome = () => {
             <button onClick={night}>NIGHT</button>
             <button onClick={auto}>AUTO</button>
             <button onClick={day}>DAY</button>
-            <button onClick={closePopup}>chiudere</button>
+            <button onClick={closePopup}>Close</button>
           </div>
         )}
       </section>
       <section>
-        <h2>Punteggi salvati</h2>
+        <h2>Saved Scores</h2>
         {scores.map((el) => (
           <p key={el.id}>
-            {el.name}: {el.category} punteggio: {el.score} / 10
+            {el.name}: {el.category} Score: {el.score} / 10
           </p>
         ))}
       </section>
