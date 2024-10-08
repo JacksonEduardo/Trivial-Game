@@ -3,6 +3,10 @@ import { useGameContext } from "../logic/globalContext"; // import the context t
 import { useEffect, useState } from "react";
 import axios from "axios";
 import he from "he";
+import { PopupGame } from "../components";
+// to save in Firebase database NoSql
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 const Game = () => {
   const { playerName, difficulty, category, randomMode } = useGameContext();
@@ -138,6 +142,23 @@ const Game = () => {
     }
   }, [openPopup, score, randomMode]);
   // --------------------------------
+
+  // FUNNCTION TO SAVE DATA IN NoSql Firebase
+  const saveScore = async () => {
+    try {
+      await addDoc(collection(db, "scores"), {
+        name: playerName,
+        score: score,
+        category: category.name,
+        difficulty: difficulty,
+        timestamp: new Date(),
+      });
+      alert("Your score has been saved");
+    } catch (e) {
+      console.error("Error during saving data", e);
+    }
+  };
+
   return (
     <main>
       {openPopup && (
@@ -151,12 +172,18 @@ const Game = () => {
           <h4>{resultCongratulation}</h4>
           <p>{score} answer correct out of 10</p>
           <h3>Do you want to save your score?</h3>
-          <button>Save and Publish</button>
+          <button onClick={saveScore}>Save and Publish</button>
           <p>Are you sure you want to publish with this name?</p>
           <p>
             If the name is not appropriate, the administrator may delete your
             game
           </p>
+          <PopupGame
+            playerName={playerName}
+            difficulty={difficulty}
+            category={category.name}
+            score={score}
+          ></PopupGame>
         </div>
       )}
       <section>

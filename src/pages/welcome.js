@@ -1,14 +1,20 @@
 import "../style/welcome.css";
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useGameContext } from "../logic/globalContext"; // import the constext to save the date
 import { night, day, auto } from "../logic/theme";
+// import dependecies of firebase
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
 
 const Welcome = () => {
   const [popup, setPopup] = useState(false);
   const { setPlayerName, score } = useGameContext(); // acces to use context by useGameContext()
   const [name, setName] = useState("");
   const navigate = useNavigate();
+  const [scores, setScores] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   // select the name of user
   const playerName = (event) => {
@@ -35,6 +41,30 @@ const Welcome = () => {
     console.log("premuto per chiudere");
   };
 
+  // code to import data from firebase
+  useEffect(() => {
+    const fetchScores = async () => {
+      try {
+        const scoresCollection = collection(db, "scores");
+        const scoresSnapshot = await getDocs(scoresCollection);
+        const scoreList = scoresSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setScores(scoreList);
+        console.log(scoreList);
+      } catch (e) {
+        setError("Error importing data");
+        console.log("Errore durante il recupero dei punteggi", e);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchScores();
+  }, []);
+
+  if (loading) return <p>Caricamento...</p>;
+  if (error) return <p>{error}</p>;
   return (
     <main className="welcomeContainer">
       <div className="themeContainer" onClick={openPopup}>
@@ -66,6 +96,14 @@ const Welcome = () => {
             <button onClick={closePopup}>chiudere</button>
           </div>
         )}
+      </section>
+      <section>
+        <h2>Punteggi salvati</h2>
+        {scores.map((el) => (
+          <p key={el.id}>
+            {el.name}: {el.category} punteggio: {el.score} / 10
+          </p>
+        ))}
       </section>
     </main>
   );
