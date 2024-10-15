@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="60" height="60" viewBox="0 0 230 230" fill="none" stroke="none" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path id="path_1" d="M0 80C0 35.8172 35.8172 0 80 0C124.183 0 160 35.8172 160 80C160 124.183 124.183 160 80 160C35.8172 160 0 124.183 0 80Z" />
+    <clipPath id="clip_path_2">
+      <use xlink:href="#path_1" />
+    </clipPath>
+  </defs>
+  <g id="SingleElement">
+    <path id="OvalContainer" d="M0 115C0 51.4873 51.4872 0 115 0C178.513 0 230 51.4873 230 115C230 178.513 178.513 230 115 230C51.4872 230 0 178.513 0 115Z" style="fill:#0F0843;fill-rule:evenodd;mix-blend-mode:normal;" />
+    <g id="Oval Mask" transform="translate(35 35)">
+      <path id="OvalMoon" d="M0 80C0 35.8172 35.8172 0 80 0C124.183 0 160 35.8172 160 80C160 124.183 124.183 160 80 160C35.8172 160 0 124.183 0 80Z" style="fill:#E0D697;fill-rule:evenodd;mix-blend-mode:normal;" />
+      <g clip-path="url(#clip_path_2)">
+        <path id="Oval" d="M0 4.11182C37.0824 -6.97257 119.438 3.96389 136 41.6679C152.562 79.3718 109.717 136.323 70.5 157.668C94.1935 102.191 88.7033 35.4969 0 4.11182Z" style="fill:#57512A;fill-rule:evenodd;mix-blend-mode:normal;" transform="translate(41.5 -1.668)" />
+      </g>
+    </g>
+    <path id="Star" d="M5.11597 0L5.11597 5.53357L9.83002 5.84106L5.11597 6.57764L4.17627 11.9025L3.65424 6.57764L0 5.84106L3.65424 5.53357L5.11597 0Z" style="fill:none;stroke-width:0.4;stroke:#FFFFFF;mix-blend-mode:normal;" transform="translate(182 51)" />
+    <path id="Star" d="M5.63715 0L5.63715 6.09729L10.8315 6.43616L5.63721 7.2478L4.60175 13.115L4.02655 7.2478L0 6.43616L4.02655 6.09729L5.63715 0Z" style="fill:none;stroke-width:0.4;stroke:#FFFFFF;mix-blend-mode:normal;" transform="translate(53 22)" />
+    <path id="Star" d="M5.63715 0L5.63715 6.09729L10.8315 6.43616L5.63721 7.2478L4.60175 13.115L4.02655 7.2478L0 6.43616L4.02655 6.09729L5.63715 0Z" style="fill:none;stroke-width:0.4;stroke:#FFFFFF;mix-blend-mode:normal;" transform="translate(24 162)" />
+    <path id="Oval" d="M0 7.5C0 3.35791 3.35785 0 7.5 0C11.6422 0 15 3.35791 15 7.5C15 11.6421 11.6422 15 7.5 15C3.35785 15 0 11.6421 0 7.5Z" style="fill:#91884E;fill-rule:evenodd;mix-blend-mode:normal;" transform="translate(86 51)" />
+    <path id="Oval" d="M0 11.5C0 5.14868 5.14874 0 11.5 0C17.8513 0 23 5.14868 23 11.5C23 17.8513 17.8513 23 11.5 23C5.14874 23 0 17.8513 0 11.5Z" style="fill:#91884E;fill-rule:evenodd;mix-blend-mode:normal;" transform="translate(104 140)" />
+    <path id="Oval" d="M0 9C0 4.02942 4.02942 0 9 0C13.9706 0 18 4.02942 18 9C18 13.9706 13.9706 18 9 18C4.02942 18 0 13.9706 0 9Z" style="fill:#91884E;fill-rule:evenodd;mix-blend-mode:normal;" transform="translate(46 106)" />
+    <path id="Oval" d="M0 8C0 3.58167 3.58173 0 8 0C12.4183 0 16 3.58167 16 8C16 12.4183 12.4183 16 8 16C3.58173 16 0 12.4183 0 8Z" style="fill:#3D391D;fill-rule:evenodd;mix-blend-mode:normal;" transform="translate(170 124)" />
+    <path id="Oval" d="M0 5C0 2.23853 2.23859 0 5 0C7.76141 0 10 2.23853 10 5C10 7.76147 7.76141 10 5 10C2.23859 10 0 7.76147 0 5Z" style="fill:#3D391D;fill-rule:evenodd;mix-blend-mode:normal;" transform="translate(151 70)" />
+  </g>
+</svg>

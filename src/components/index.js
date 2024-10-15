@@ -1,3 +1,3 @@
 import PopupGame from "./popupGame";
-
-export { PopupGame };
+import Navbar from "./navbar";
+export { PopupGame, Navbar };

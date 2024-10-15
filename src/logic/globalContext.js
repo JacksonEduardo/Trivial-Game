@@ -10,6 +10,22 @@ export const GameProvider = ({ children }) => {
   const [difficulty, setDifficulty] = useState(""); // difficulty easy medium hard
   const [category, setCategory] = useState(""); // to use category in all application
   const [randomMode, setRandomMode] = useState(false); //
+  const [theme, setTheme] = useState(""); // to use theme in all application
+
+  // logic to set theme
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      setTheme(storedTheme);
+      document.documentElement.setAttribute("data-theme", storedTheme);
+    } else {
+      const time = new Date().getHours();
+      const initialTheme = time < 19 ? "dark" : "light";
+      setTheme(initialTheme);
+      document.documentElement.setAttribute("data-theme", initialTheme);
+      localStorage.setItem("theme", initialTheme);
+    }
+  }, []);
 
   // SAVE in the localStorage
   useEffect(() => {
@@ -61,6 +77,8 @@ export const GameProvider = ({ children }) => {
         setCategory,
         randomMode,
         setRandomMode,
+        theme,
+        setTheme,
       }}
     >
       {children}

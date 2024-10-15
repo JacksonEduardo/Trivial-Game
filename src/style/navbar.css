@@ -1,0 +1,53 @@
+/* SECTION ONLY TO EDIT BANNER */
+
+/* ALL CSS of navbar component */
+.navbarContainer {
+  width: 100%;
+  height: 80px;
+  /* background-color: var(--bgBody); */
+  transition: var(--transition);
+  background-color: aqua;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+}
+.containerIconTheme {
+  width: 60px;
+  height: 60px;
+  background-color: aqua;
+}
+.test {
+  opacity: 0;
+  transition: 2s ease;
+}
+.moonIcon {
+  opacity: 1;
+  background-image: url(../mediaSvg/moon.svg);
+  background-repeat: no-repeat;
+  animation: rotateMoon 2s ease;
+}
+.sunIcon {
+  opacity: 1;
+  background-image: url(../mediaSvg/sun.svg);
+  background-repeat: no-repeat;
+  animation: rotateSun 2s ease;
+}
+
+@keyframes rotateMoon {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
+}
+@keyframes rotateSun {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
+}

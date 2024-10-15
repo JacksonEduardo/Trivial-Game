@@ -5,7 +5,13 @@ import "../style/popupGame.css";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
-const PopupGame = ({ playerName, difficulty, category, score }) => {
+const PopupGame = ({
+  playerName,
+  difficulty,
+  category,
+  score,
+  congratulation,
+}) => {
   //   const [saveMsg, setSaveMsg] = useState("Salva e condividi");
 
   // FUNNCTION TO SAVE DATA IN NoSql Firebase
@@ -25,6 +31,7 @@ const PopupGame = ({ playerName, difficulty, category, score }) => {
   };
   return (
     <div className="popupGameContainer">
+      <h3>{congratulation}</h3>
       <h3>{playerName}</h3>
       <h3>{difficulty}</h3>
       <h3>{category}</h3>

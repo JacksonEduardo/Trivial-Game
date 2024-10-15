@@ -183,6 +183,7 @@ const Game = () => {
             difficulty={difficulty}
             category={category.name}
             score={score}
+            congratulation={resultCongratulation}
           ></PopupGame>
         </div>
       )}

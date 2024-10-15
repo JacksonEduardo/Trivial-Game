@@ -12,6 +12,7 @@ const Difficulty = () => {
     difficulty,
     category,
     setRandomMode,
+    theme,
   } = useGameContext(); // acces to the name
   const [data, setData] = useState([]);
   const navigate = useNavigate();
@@ -97,7 +98,7 @@ const Difficulty = () => {
 
   return (
     <>
-      <p>Cool</p>
+      <p>{theme}</p>
       <h3>{playerName}</h3>
       <p>Select your challenge</p>
       <main>

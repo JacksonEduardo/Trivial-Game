@@ -1,14 +1,15 @@
 import "../style/welcome.css";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+// import { Navbar } from "../components";
 import { useGameContext } from "../logic/globalContext";
-import { night, day, auto } from "../logic/theme";
+// import { night, day, auto } from "../logic/theme";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 
 const Welcome = () => {
-  const [popup, setPopup] = useState(false);
-  const { setPlayerName, score } = useGameContext();
+  // const [popup, setPopup] = useState(false);
+  const { setPlayerName } = useGameContext();
   const [name, setName] = useState("");
   const navigate = useNavigate();
   const [scores, setScores] = useState([]);
@@ -28,8 +29,8 @@ const Welcome = () => {
     }
   };
 
-  const openPopup = () => setPopup(true);
-  const closePopup = () => setPopup(false);
+  // const openPopup = () => setPopup(true);
+  // const closePopup = () => setPopup(false);
 
   useEffect(() => {
     const fetchScores = async () => {
@@ -46,7 +47,9 @@ const Welcome = () => {
         setError("Error importing data");
         console.log("Error fetching scores", e);
       } finally {
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 1500);
       }
     };
     fetchScores();
@@ -57,35 +60,20 @@ const Welcome = () => {
 
   return (
     <main className="welcomeContainer">
-      <div className="themeContainer" onClick={openPopup}>
-        <button>Black</button>
-        <button>White</button>
-        <p>{score}</p>
-      </div>
-      <div>
-        <h1>Welcome to Trivial Game</h1>
-      </div>
-      <div className="line" />
       <section className="welcomeSection">
-        <h2>Insert your name</h2>
-        <input
-          type="text"
-          value={name}
-          onChange={playerName}
-          required
-          maxLength={20}
-        />
-        <button className="btn" onClick={handleStart}>
-          Start
-        </button>
-        {popup && (
-          <div className="popupContainer">
-            <button onClick={night}>NIGHT</button>
-            <button onClick={auto}>AUTO</button>
-            <button onClick={day}>DAY</button>
-            <button onClick={closePopup}>Close</button>
-          </div>
-        )}
+        <div>
+          <h1 className="titleWelcome">Trivial Game</h1>
+          <input
+            type="text"
+            value={name}
+            onChange={playerName}
+            required
+            maxLength={20}
+          />
+          <button className="btn" onClick={handleStart}>
+            Start
+          </button>
+        </div>
       </section>
       <section>
         <h2>Saved Scores</h2>

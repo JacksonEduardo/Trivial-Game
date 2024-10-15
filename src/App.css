@@ -3,10 +3,6 @@
   margin: 0;
   padding: 0;
 }
-:root {
-  --bgBody: rgb(3, 23, 0);
-  --text: rgb(200, 184, 0);
-}
 .btn {
   width: 100px;
   height: 30px;
@@ -14,4 +10,24 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+.noDecoration {
+  text-decoration: none;
+  color: var(--text);
+}
+
+:root {
+  --bgBodyStatic: rgb(37, 90, 74);
+  --text: gold;
+  --transition: 2s ease;
+  --fontTitle: "Galada", cursive;
+  /* font-weight: 400; */
+  /* font-style: normal; */
+}
+
+[data-theme="light"] {
+  --bgBody: rgb(7, 28, 11);
+}
+[data-theme="dark"] {
+  --bgBody: white;
 }

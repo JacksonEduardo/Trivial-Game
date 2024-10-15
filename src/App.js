@@ -1,6 +1,7 @@
 // import logo from "./logo.svg";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Welcome, Difficulty, Game } from "./pages/index";
+import { Navbar } from "./components";
 import { GameProvider } from "./logic/globalContext"; //import the game provider
 import "./App.css";
 
@@ -8,6 +9,7 @@ function App() {
   return (
     <GameProvider>
       <Router>
+        <Navbar></Navbar>
         <Routes>
           <Route path="/" element={<Welcome />} />
           <Route path="difficulty" element={<Difficulty />} />
