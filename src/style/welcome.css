@@ -7,7 +7,26 @@
   color: var(--text);
   overflow: hidden;
 }
-
+.msgAlert {
+  width: 200px;
+  height: fit-content;
+  background-color: red;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-radius: 0 0 10px 10px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.msgAlertOpen {
+  top: 80px;
+  transition: 1s ease-in-out top;
+}
+.msgAlertClose {
+  top: 0px;
+  transition: 1s ease-in-out top;
+}
 .welcomeSection {
   width: 100%;
   height: 100%;
@@ -173,6 +192,7 @@
   z-index: 10;
   color: white;
   border-radius: 10px;
+  font-size: 12px;
 }
 .scoreListOpen {
   top: 100px;
@@ -193,7 +213,12 @@
 .openCloseList {
   width: 50px;
   height: 50px;
+  background-image: url(../mediaSvg/openBanner.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   background-color: blueviolet;
+  border-radius: 50% 0 0 50%;
   cursor: pointer;
   left: -50px;
   top: 50%;

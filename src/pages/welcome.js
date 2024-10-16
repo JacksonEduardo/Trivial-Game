@@ -17,6 +17,7 @@ const Welcome = () => {
   const [error, setError] = useState(null);
   const [animation, setAnimation] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
+  const [msg, setMsg] = useState(false);
 
   const playerName = (event) => {
     setName(event.target.value.toUpperCase());
@@ -27,7 +28,11 @@ const Welcome = () => {
       setPlayerName(name);
       navigate("/difficulty");
     } else {
-      alert("Please insert your name to continue");
+      setMsg(true);
+      // alert("Please insert your name to continue");
+      setTimeout(() => {
+        setMsg(false);
+      }, 3000);
     }
   };
 
@@ -66,17 +71,12 @@ const Welcome = () => {
     setIsOpen((prev) => !prev);
     console.log("click per aprire");
   }
-  // function open() {
-  //   setIsOpen(true);
-  //   console.log("click per aprire");
-  // }
-  // function close() {
-  //   setIsOpen(true);
-  //   console.log("click per aprire");
-  // }
 
   return (
     <main className="welcomeContainer">
+      <div className={`msgAlert ${msg ? "msgAlertOpen" : "msgAlertClose"}`}>
+        <p>Please enter your name</p>
+      </div>
       <section className="welcomeSection">
         <div className="titleUpDown">
           {animation ? (
@@ -124,7 +124,17 @@ const Welcome = () => {
           <div className="btnTitleTable">
             <div className="openCloseList"></div>
             <h2>Best Scores</h2>
-            <table>
+            {scores.map((el) => (
+              <div>
+                <h3>{el.name}</h3>
+                <div>
+                  <p>{el.category}</p>
+                  <p>{el.score}</p>
+                </div>
+              </div>
+            ))}
+
+            {/* <table>
               <thead>
                 <tr>
                   <th></th>
@@ -144,7 +154,7 @@ const Welcome = () => {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </table> */}
           </div>
         </section>
       )}
