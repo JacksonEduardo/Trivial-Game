@@ -49,31 +49,51 @@ const Welcome = () => {
       } finally {
         setTimeout(() => {
           setLoading(false);
-        }, 1500);
+        }, 2000);
       }
     };
     fetchScores();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
+  // if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
   return (
     <main className="welcomeContainer">
       <section className="welcomeSection">
-        <div>
-          <h1 className="titleWelcome">Trivial Game</h1>
-          <input
-            type="text"
-            value={name}
-            onChange={playerName}
-            required
-            maxLength={20}
-          />
-          <button className="btn" onClick={handleStart}>
-            Start
-          </button>
+        <div className="titleUpDown">
+          {loading ? (
+            <div className="circleContainer">
+              <div className="circleOne"></div>
+              <div className="circleTwo"></div>
+              <div className="circleThree"></div>
+              <div className="circleFour"></div>
+            </div>
+          ) : null}
+          <div className="titleUp">
+            <h1>Trivial</h1>
+          </div>
+          <div className="titleDown">
+            {loading ? <div className="lineFlash"></div> : null}
+            {!loading && <h1 className="hiddenE">e</h1>}
+            <h1>Gam</h1>
+          </div>
         </div>
+        {!loading && (
+          <div className="nameInputContainer">
+            <input
+              className="nameInput"
+              type="text"
+              value={name}
+              onChange={playerName}
+              required
+              maxLength={20}
+            />
+            <button className="btnNameInput" onClick={handleStart}>
+              Start
+            </button>
+          </div>
+        )}
       </section>
       <section>
         <h2>Saved Scores</h2>

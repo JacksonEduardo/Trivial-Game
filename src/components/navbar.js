@@ -9,7 +9,7 @@ const Navbar = () => {
   const [dinamicClass, setDinamicClass] = useState("");
 
   useEffect(() => {
-    setDinamicClass(theme === "light" ? "moonIcon test" : "sunIcon test");
+    setDinamicClass(theme === "light" ? "sunIcon test" : "moonIcon test");
   }, [theme]);
 
   // toogle function
@@ -21,7 +21,7 @@ const Navbar = () => {
     localStorage.setItem("theme", newTheme); // save in localStorage
     // code to animate button to change theme
 
-    setDinamicClass(newTheme === "light" ? "sunIcon" : "moonIcon");
+    // setDinamicClass(newTheme === "light" ? "moonIcon" : "sunIcon");
   };
 
   return (

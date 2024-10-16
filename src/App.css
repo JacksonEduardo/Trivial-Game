@@ -26,8 +26,10 @@
 }
 
 [data-theme="light"] {
-  --bgBody: rgb(7, 28, 11);
+  --bgBody: rgb(185, 184, 184);
+  --nav: rgb(168, 167, 167);
 }
 [data-theme="dark"] {
-  --bgBody: white;
+  --bgBody: rgb(13, 52, 20);
+  --nav: rgb(14, 60, 20);
 }

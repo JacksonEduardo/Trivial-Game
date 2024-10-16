@@ -6,16 +6,155 @@
   position: relative;
   color: var(--text);
 }
-/* forse */
+
 .welcomeSection {
   width: 100%;
   height: 100%;
-  /* background-color: aqua; */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 80px;
+  font-size: 50px;
+  display: flex;
+  flex-direction: column;
 }
-.titleWelcome {
+
+.titleUpDown {
   font-family: var(--fontTitle);
+  font-weight: bolder;
+  position: relative;
+}
+.circleContainer {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  animation: rotate 1s cubic-bezier(0.5, 1, 1, 0.5) infinite; /* accelerazione al centro */
+  transform-origin: center;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.circleOne,
+.circleTwo,
+.circleThree,
+.circleFour {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.circleOne {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: rgb(255, 132, 0);
+}
+
+.circleTwo {
+  background-color: coral;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+.circleThree {
+  background-color: yellowgreen;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+.circleFour {
+  background-color: rgb(247, 88, 152);
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.titleDown {
+  position: relative;
+}
+.lineFlash {
+  width: 35px;
+  height: 5px;
+  background-color: var(--text);
+  position: absolute;
+  right: -35px;
+  bottom: 15px;
+  animation: lineFlash 1s linear infinite;
+}
+@keyframes lineFlash {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.hiddenE {
+  position: absolute;
+  right: -30px;
+  animation: letter 0.5s linear;
+}
+
+@keyframes letter {
+  0% {
+    top: -500px;
+    right: -30px;
+  }
+  100% {
+    top: 0px;
+    right: -30px;
+  }
+}
+
+.titleUp,
+.titleDown {
+  width: fit-content;
+  height: 100px;
+}
+.nameInputContainer {
+  width: 200px;
+  height: 150px;
+  /* background-color: aqua; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  animation: nameInput 0.5s linear;
+  overflow: hidden;
+}
+@keyframes nameInput {
+  0% {
+    height: 0px;
+  }
+  100% {
+    height: 150px;
+  }
+}
+.nameInput {
+  width: 200px;
+  height: 30px;
+  border-radius: 30px;
+  border: none;
+}
+.btnNameInput {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: none;
+  background-color: cadetblue;
 }
