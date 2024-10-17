@@ -6,14 +6,14 @@ import axios from "axios";
 
 const Difficulty = () => {
   const {
-    playerName,
+    // playerName,
     setDifficulty,
     setCategory,
     difficulty,
     category,
     setRandomMode,
-    theme,
-  } = useGameContext(); // acces to the name
+    // theme,
+  } = useGameContext(); // acces to the global context
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
@@ -98,38 +98,50 @@ const Difficulty = () => {
 
   return (
     <>
-      <p>{theme}</p>
+      {/* <p>{theme}</p>
       <h3>{playerName}</h3>
-      <p>Select your challenge</p>
-      <main>
-        <h1>Select difficult level</h1>
-        <select value={category.id} onChange={handleCategorySelect}>
-          <option value="" disabled>
-            Select Category
-          </option>
-          {data &&
-            data.map((el) => {
-              return (
-                <option value={el.id} key={el.id}>
-                  {el.name}
-                </option>
-              );
-            })}
-        </select>
-        <select value={difficulty} onChange={handleDifficultySelect}>
-          <option value="" disabled>
-            Select Difficulty
-          </option>
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-        </select>
-        <button className="btn" onClick={handleStartGame}>
-          Enjoy the game
-        </button>
-        <section>
-          <h2>Do you want to try random mode?</h2>
-          <button onClick={random}>Yess, I'm a Genious</button>
+      <p>Select your challenge</p> */}
+      <main className="difficultyContainer">
+        <section className="selectionContainer">
+          <h1>Set Your Challenge!</h1>
+          <div className="selectOption">
+            <select
+              className="selectCategoryDifficulty"
+              value={category.id}
+              onChange={handleCategorySelect}
+            >
+              <option value="" disabled>
+                Select Category
+              </option>
+              {data &&
+                data.map((el) => {
+                  return (
+                    <option value={el.id} key={el.id}>
+                      {el.name}
+                    </option>
+                  );
+                })}
+            </select>
+            <select
+              className="selectCategoryDifficulty"
+              value={difficulty}
+              onChange={handleDifficultySelect}
+            >
+              <option value="" disabled>
+                Select Difficulty
+              </option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+            <button className="btnEnjoy" onClick={handleStartGame}>
+              Enjoy the game
+            </button>
+          </div>
+          <section className="randomContainer">
+            <h2 className="sentenceRandom">Up for Random Mode?</h2>
+            <button className="btnGenius" onClick={random}></button>
+          </section>
         </section>
       </main>
     </>

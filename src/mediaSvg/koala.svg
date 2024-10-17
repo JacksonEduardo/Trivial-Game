@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="100" height="125" viewBox="0 0 324 225" fill="none" stroke="none" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <g id="SingleElement">
+    <path id="Oval" d="M0 54C0 24.1765 27.9822 0 62.5 0C97.0178 0 125 24.1765 125 54C125 83.8235 97.0178 108 62.5 108C27.9822 108 0 83.8235 0 54Z" style="fill:#686868;fill-rule:evenodd;mix-blend-mode:normal;" />
+    <path id="Oval" d="M0 54C0 24.1765 27.9822 0 62.5 0C97.0178 0 125 24.1765 125 54C125 83.8235 97.0178 108 62.5 108C27.9822 108 0 83.8235 0 54Z" style="fill:#686868;fill-rule:evenodd;mix-blend-mode:normal;" transform="translate(199 0)" />
+    <path id="Oval" d="M0 34.5C0 15.4463 21.2665 0 47.5 0C73.7335 0 95 15.4463 95 34.5C95 53.5537 73.7335 69 47.5 69C21.2665 69 0 53.5537 0 34.5Z" style="fill:#FEABD3;fill-rule:evenodd;mix-blend-mode:normal;" transform="translate(16 22)" />
+    <path id="Oval" d="M0 34.5C0 15.4463 20.1472 0 45 0C69.8528 0 90 15.4463 90 34.5C90 53.5537 69.8528 69 45 69C20.1472 69 0 53.5537 0 34.5Z" style="fill:#FEABD3;fill-rule:evenodd;mix-blend-mode:normal;" transform="translate(214 22)" />
+    <path id="Oval" d="M0 88.5C0 39.6228 44.5477 0 99.5 0C154.452 0 199 39.6228 199 88.5C199 137.377 154.452 177 99.5 177C44.5477 177 0 137.377 0 88.5Z" style="fill:#747474;fill-rule:evenodd;mix-blend-mode:normal;" transform="translate(62 48)" />
+    <path id="Oval" d="M0 12C0 5.37256 6.26801 0 14 0C21.732 0 28 5.37256 28 12C28 18.6274 27.732 16 20 16C12.268 16 0 18.6274 0 12Z" style="fill:#000000;fill-rule:evenodd;mix-blend-mode:normal;" transform="translate(199 99)" />
+    <path id="Oval" d="M0 9C0 4.02954 8.95432 0 20 0C31.0457 0 40 4.02954 40 9C40 13.9705 31.0457 18 20 18C8.95432 18 0 13.9705 0 9Z" style="fill:#FEABD3;fill-rule:evenodd;mix-blend-mode:normal;" transform="translate(85 115)" />
+    <path id="Oval" d="M0 9C0 4.02954 8.95428 0 20 0C31.0457 0 40 4.02954 40 9C40 13.9705 31.0457 18 20 18C8.95428 18 0 13.9705 0 9Z" style="fill:#FEABD3;fill-rule:evenodd;mix-blend-mode:normal;" transform="translate(199 115)" />
+    <path id="Oval" d="M22.2612 0.0146484C41.3459 0.86084 47.6912 31.0234 45.2228 41.0146C42.7545 51.0059 33.3069 54.0146 22.2612 54.0146C11.2155 54.0146 3.7229 46.8982 0.761169 41.0146C-2.2005 35.1311 3.17651 -0.831299 22.2612 0.0146484Z" style="fill:#000000;fill-rule:evenodd;mix-blend-mode:normal;" transform="translate(139.739 90.986)" />
+    <path id="Oval" d="M0 12C0 5.37256 6.26801 0 14 0C21.732 0 28 5.37256 28 12C28 18.6274 21.732 16 14 16C6.26801 16 0 18.6274 0 12Z" style="fill:#000000;fill-rule:evenodd;mix-blend-mode:normal;" transform="translate(95 99)" />
+    <path id="Oval" d="M0.562988 0.0012207C1.8194 0.0693359 9 3.4353 9 7.67114C9 7.68677 4.66449 1.3667 2.45544 2.04785C0.24646 2.729 -0.69342 -0.0668945 0.562988 0.0012207Z" style="fill:#FFFFFF;fill-rule:evenodd;mix-blend-mode:normal;" transform="translate(110 101)" />
+    <path id="Oval" d="M6.47729 0.0012207C8.48761 0.110596 3.45538 2.73389 2.74268 4.00098C2.02997 5.26807 0.771118 6.96533 0.299805 8.03198C-1.38153 6.93555 4.46692 -0.108154 6.47729 0.0012207Z" style="fill:#FFFFFF;fill-rule:evenodd;mix-blend-mode:normal;" transform="translate(200.757 102.499)" />
+    <path id="Oval" d="M0.000549316 0.956055C-0.0692139 -1.99658 6.49213 4.83252 14.4999 4.83252C22.5078 4.83228 28.9297 -2.58032 28.9995 0.956055C29.0691 4.49219 22.5078 10 14.4999 10.0002C6.49213 10.0002 0.0702515 3.90869 0.000549316 0.956055Z" style="fill:#000000;fill-rule:evenodd;mix-blend-mode:normal;" transform="matrix(0.988 -0.156 0.156 0.988 149.684 172.724)" />
+  </g>
+</svg>

@@ -5,6 +5,8 @@
   width: 100%;
   height: 80px;
   background-color: var(--nav);
+  background: rgb(247, 247, 247);
+  background: linear-gradient(90deg, var(--nav) 0%, var(--bgBody) 100%);
   transition: var(--transition);
   color: var(--text);
   display: flex;
@@ -14,8 +16,24 @@
   position: absolute;
   z-index: 1;
 }
+.logoTitle {
+  width: 150px;
+  height: 100%;
+  /* background-color: aqua; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+}
 .logo {
   font-family: var(--fontTitle);
+}
+.logoKoala {
+  width: 75px;
+  height: 75px;
+  /* background-color: aqua; */
+  background-image: url(../mediaSvg/koala.svg);
+  background-size: cover;
 }
 .containerIconTheme {
   width: 60px;

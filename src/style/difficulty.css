@@ -1,0 +1,80 @@
+.difficultyContainer {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bgBody);
+  transition: var(--transition);
+  color: white;
+}
+
+.selectionContainer {
+  width: 60%;
+  height: fit-content;
+  border-radius: 10px;
+  /* background-color: aqua; */
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+.selectOption {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  /* background-color: blueviolet; */
+  padding: 10px;
+}
+.selectCategoryDifficulty {
+  width: 50%;
+  height: 45px;
+  font-size: 15px;
+  font-weight: bolder;
+  border: none;
+  border-radius: 30px;
+  text-align: center;
+}
+.btnEnjoy {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: none;
+  background-color: cadetblue;
+  cursor: pointer;
+  animation: nameInput 1s linear;
+  color: white;
+}
+.randomContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.btnGenius {
+  width: 80px;
+  height: 80px;
+  background-color: cadetblue;
+  border-radius: 50%;
+  margin: 15px;
+  border: none;
+  background-image: url(../mediaSvg/genius.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+@media (max-width: 957px) {
+  .selectionContainer {
+    width: 95%;
+  }
+  .selectCategoryDifficulty {
+    width: 90%;
+    font-size: 12px;
+    font-weight: bolder;
+  }
+  .sentenceRandom {
+    font-size: 15px;
+  }
+}

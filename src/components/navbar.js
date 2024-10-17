@@ -28,8 +28,9 @@ const Navbar = () => {
     <>
       <nav className="navbarContainer">
         <Link className="noDecoration" to={"/"}>
-          <div>
+          <div className="logoTitle">
             <h1 className="logo">Trivial</h1>
+            <div className="logoKoala"></div>
           </div>
         </Link>
         <div onClick={toggleTheme} className="iconContainer">
