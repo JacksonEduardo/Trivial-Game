@@ -74,6 +74,12 @@ const Welcome = () => {
 
   return (
     <main className="welcomeContainer">
+      <div className="cardWelcomeContainer">
+        <div className="cardWelcome Four"></div>
+        <div className="cardWelcome Three"></div>
+        <div className="cardWelcome Two"></div>
+        <div className="cardWelcome One"></div>
+      </div>
       <div className={`msgAlert ${msg ? "msgAlertOpen" : "msgAlertClose"}`}>
         <p>Please enter your name</p>
       </div>

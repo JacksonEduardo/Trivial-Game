@@ -30,6 +30,6 @@
   --nav: rgb(168, 167, 167);
 }
 [data-theme="dark"] {
-  --bgBody: rgb(10, 40, 15);
+  --bgBody: rgb(7, 27, 10);
   --nav: rgb(11, 48, 16);
 }

@@ -29,7 +29,7 @@ const Navbar = () => {
       <nav className="navbarContainer">
         <Link className="noDecoration" to={"/"}>
           <div>
-            <h1>Trivial Match</h1>
+            <h1 className="logo">Trivial</h1>
           </div>
         </Link>
         <div onClick={toggleTheme} className="iconContainer">
