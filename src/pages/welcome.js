@@ -80,9 +80,9 @@ const Welcome = () => {
         <div className="cardWelcome Two"></div>
         <div className="cardWelcome One"></div>
       </div>
-      <div className={`msgAlert ${msg ? "msgAlertOpen" : "msgAlertClose"}`}>
+      {/* <div className={`msgAlert ${msg ? "msgAlertOpen" : "msgAlertClose"}`}>
         <p>Please enter your name</p>
-      </div>
+        </div> */}
       <section className="welcomeSection">
         <div className="titleUpDown">
           {animation ? (
@@ -102,7 +102,11 @@ const Welcome = () => {
             <h1>Gam</h1>
           </div>
         </div>
-        <div className="nameInputContainer">
+        {/* <div className="nameInputContainer"> */}
+        <div className={`test2 ${animation ? "" : "nameInputContainer"}`}>
+          <div className={`msgAlert ${msg ? "msgAlertOpen" : "msgAlertClose"}`}>
+            <p>Please enter your name</p>
+          </div>
           {!animation && (
             <>
               <input
@@ -131,36 +135,24 @@ const Welcome = () => {
             <div className="openCloseList"></div>
             <h2>Best Scores</h2>
             {scores.map((el) => (
-              <div>
-                <h3>{el.name}</h3>
-                <div>
-                  <p>{el.category}</p>
-                  <p>{el.score}</p>
+              <div className="infoScoreContainer">
+                <h3 className="nameUser">{el.name}</h3>
+                <div className="dataUser">
+                  <div className="categoryInfo">
+                    <p>{el.category}</p>
+                  </div>
+                  <div className="dificultyInfo">
+                    <p>{el.difficulty}</p>
+                  </div>
+                  <div className="scoreInfo">
+                    <p>{el.score}/10</p>
+                  </div>
+                  <div className="geniousInfo">
+                    <p>Genious</p>
+                  </div>
                 </div>
               </div>
             ))}
-
-            {/* <table>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Category</th>
-                  <th>Score</th>
-                  <th>Mode</th>
-                </tr>
-              </thead>
-              <tbody>
-                {scores.map((el) => (
-                  <tr key={el.id}>
-                    <td>{el.name}</td>
-                    <td>
-                      <p>{el.category}</p>
-                    </td>
-                    <td>{el.score} / 10</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table> */}
           </div>
         </section>
       )}
