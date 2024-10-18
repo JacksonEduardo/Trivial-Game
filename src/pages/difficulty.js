@@ -139,7 +139,12 @@ const Difficulty = () => {
             </button>
           </div>
           <section className="randomContainer">
-            <h2 className="sentenceRandom">Up for Random Mode?</h2>
+            <div className="sentenceRandomEmpGenius">
+              <h2 className="sentenceRandom">Up for Random Mode?</h2>
+              <div className="empGenius">
+                {/* empty, only to contain img logo */}
+              </div>
+            </div>
             <button className="btnGenius" onClick={random}></button>
           </section>
         </section>

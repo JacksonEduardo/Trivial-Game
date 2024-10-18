@@ -10,11 +10,12 @@
 .mascotteAlert {
   width: 160px;
   height: 100px;
+  position: absolute;
   background-image: url(../mediaSvg/empAlert.svg);
   background-repeat: no-repeat;
   background-size: cover;
+  top: 80px;
   transition: 0.5s ease-in-out left;
-
   z-index: 10;
 }
 .msgMascotteBanner {
@@ -28,13 +29,9 @@
   z-index: 5;
 }
 .mascotteAlertHidden {
-  position: absolute;
-  top: 80px;
   left: -340px;
 }
 .mascotteAlertView {
-  position: absolute;
-  top: 80px;
   left: 0px;
 }
 .cardWelcomeContainer {

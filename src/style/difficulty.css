@@ -48,16 +48,32 @@
 }
 .randomContainer {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
+  border-radius: 10px;
+  background-color: var(--nav);
+}
+.sentenceRandomEmpGenius {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.empGenius {
+  width: 170px;
+  height: 100px;
+  /* background-color: blue; */
+  background-image: url(../mediaSvg/empGenius.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .btnGenius {
   width: 80px;
   height: 80px;
   background-color: cadetblue;
   border-radius: 50%;
-  margin: 15px;
+  /* margin: 15px; */
   border: none;
   background-image: url(../mediaSvg/genius.png);
   background-position: center;
