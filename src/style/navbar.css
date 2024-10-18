@@ -17,22 +17,23 @@
   z-index: 1;
 }
 .logoTitle {
-  width: 150px;
+  width: 80px;
   height: 100%;
   /* background-color: aqua; */
-  display: flex;
+  text-align: center;
+  /* display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; */
   margin: auto;
 }
 .logo {
   font-family: var(--fontTitle);
 }
-.logoKoala {
-  width: 75px;
-  height: 75px;
+.logoEmpanada {
+  width: 80px;
+  height: 45px;
   /* background-color: aqua; */
-  background-image: url(../mediaSvg/koala.svg);
+  background-image: url(../mediaSvg/empanada.svg);
   background-size: cover;
 }
 .containerIconTheme {

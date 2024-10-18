@@ -115,6 +115,7 @@ const Welcome = () => {
                 value={name}
                 onChange={playerName}
                 required
+                placeholder="Insert your name"
                 maxLength={20}
               />
               <button className="btnNameInput" onClick={handleStart}>

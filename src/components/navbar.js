@@ -29,8 +29,8 @@ const Navbar = () => {
       <nav className="navbarContainer">
         <Link className="noDecoration" to={"/"}>
           <div className="logoTitle">
+            <div className="logoEmpanada"></div>
             <h1 className="logo">Trivial</h1>
-            <div className="logoKoala"></div>
           </div>
         </Link>
         <div onClick={toggleTheme} className="iconContainer">
