@@ -74,6 +74,20 @@ const Welcome = () => {
 
   return (
     <main className="welcomeContainer">
+      {/* mascotte animation */}
+      <div
+        className={`mascotteAlert ${
+          msg ? "mascotteAlertView" : "mascotteAlertHidden"
+        }`}
+      >
+        <div className="msgMascotteAlert">
+          {/* empty, only to contain mascotte */}
+        </div>
+        <div className="msgMascotteBanner">
+          <p>Please enter your name</p>
+        </div>
+      </div>
+      {/* cards animation */}
       <div className="cardWelcomeContainer">
         <div className="cardWelcome Four"></div>
         <div className="cardWelcome Three"></div>
@@ -104,9 +118,9 @@ const Welcome = () => {
         </div>
         {/* <div className="nameInputContainer"> */}
         <div className={`test2 ${animation ? "" : "nameInputContainer"}`}>
-          <div className={`msgAlert ${msg ? "msgAlertOpen" : "msgAlertClose"}`}>
+          {/* <div className={`msgAlert ${msg ? "msgAlertOpen" : "msgAlertClose"}`}>
             <p>Please enter your name</p>
-          </div>
+          </div> */}
           {!animation && (
             <>
               <input
@@ -116,7 +130,7 @@ const Welcome = () => {
                 onChange={playerName}
                 required
                 placeholder="Insert your name"
-                maxLength={20}
+                maxLength={15}
               />
               <button className="btnNameInput" onClick={handleStart}>
                 Start

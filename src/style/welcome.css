@@ -7,6 +7,36 @@
   color: var(--text);
   overflow: hidden;
 }
+.mascotteAlert {
+  width: 160px;
+  height: 100px;
+  background-image: url(../mediaSvg/empAlert.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 0.5s ease-in-out left;
+
+  z-index: 10;
+}
+.msgMascotteBanner {
+  width: 180px;
+  padding: 5px 5px;
+  border-radius: 10px;
+  background-color: red;
+  position: absolute;
+  right: -170px;
+  color: white;
+  z-index: 5;
+}
+.mascotteAlertHidden {
+  position: absolute;
+  top: 80px;
+  left: -340px;
+}
+.mascotteAlertView {
+  position: absolute;
+  top: 80px;
+  left: 0px;
+}
 .cardWelcomeContainer {
   width: 350px;
   height: 150px;
