@@ -8,15 +8,16 @@
   overflow: hidden;
 }
 .mascotteAlert {
-  width: 160px;
+  width: 180px;
   height: 100px;
   position: absolute;
   background-image: url(../mediaSvg/empAlert.svg);
   background-repeat: no-repeat;
   background-size: cover;
-  top: 80px;
-  transition: 0.5s ease-in-out left;
+  top: 100px;
+  transition: 0.8s ease-in-out left;
   z-index: 10;
+  /* background-color: aqua; */
 }
 .msgMascotteBanner {
   width: 180px;
@@ -24,15 +25,17 @@
   border-radius: 10px;
   background-color: red;
   position: absolute;
-  right: -170px;
+  top: -20px;
   color: white;
   z-index: 5;
 }
 .mascotteAlertHidden {
-  left: -340px;
+  left: -180px;
+  transform: translateX(-50%);
 }
 .mascotteAlertView {
-  left: 0px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .cardWelcomeContainer {
   width: 350px;
@@ -308,7 +311,7 @@
   border: none;
   animation: nameInput 1s linear;
 }
-.btnNameInput {
+/* .btnNameInput {
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -317,7 +320,7 @@
   cursor: pointer;
   animation: nameInput 1s linear;
   color: white;
-}
+} */
 @keyframes nameInput {
   0% {
     opacity: 0;

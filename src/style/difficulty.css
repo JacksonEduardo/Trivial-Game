@@ -6,6 +6,38 @@
   color: white;
 }
 
+.mascotAlertSelection {
+  width: 180px;
+  height: 100px;
+  position: absolute;
+  /* background-color: aqua; */
+  background-image: url(../mediaSvg/empAlert.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: 100px;
+  transform: translateX(-50%);
+  transition: 0.8s ease-in-out left;
+  z-index: 10;
+}
+.alertCatDiffBanner {
+  width: 220px;
+  padding: 5px 5px;
+  border-radius: 10px;
+  background-color: red;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  z-index: 5;
+}
+.mascotAlertSelectionView {
+  left: 50%;
+}
+.mascotAlertSelectionHiden {
+  left: -200px;
+}
+
 .selectionContainer {
   width: 60%;
   height: fit-content;
@@ -42,46 +74,46 @@
   border-radius: 50%;
   border: none;
   background-color: cadetblue;
+  border: solid 3px white;
   cursor: pointer;
   animation: nameInput 1s linear;
   color: white;
 }
 .randomContainer {
+  width: 65%;
+  margin: auto;
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
   background-color: var(--nav);
+  transition: var(--transition);
+}
+.sentenceRandom {
+  margin-top: 10px;
 }
 .sentenceRandomEmpGenius {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
 }
 .empGenius {
   width: 170px;
   height: 100px;
+  margin: 10px;
   /* background-color: blue; */
   background-image: url(../mediaSvg/empGenius.svg);
   background-repeat: no-repeat;
   background-position: center;
 }
-.btnGenius {
-  width: 80px;
-  height: 80px;
-  background-color: cadetblue;
-  border-radius: 50%;
-  /* margin: 15px; */
-  border: none;
-  background-image: url(../mediaSvg/genius.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  cursor: pointer;
-}
+
 @media (max-width: 957px) {
+  .randomContainer {
+    width: 95%;
+    margin: none;
+  }
   .selectionContainer {
     width: 95%;
   }

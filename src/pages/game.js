@@ -18,6 +18,7 @@ const Game = () => {
   const [msgResult, setMsgResult] = useState([]); // create stato to use like a condition to see or not a componente card o message
   const [openPopup, setOpenPopup] = useState();
   const [disableBtn, setDisableBtn] = useState(true);
+  const [cardGame, setCardGame] = useState(false);
   const [resultCongratulation, setResultCongratulation] = useState("");
 
   // function to mix the answer
@@ -43,6 +44,7 @@ const Game = () => {
       });
       setData(decodedQuestions);
       setDisableBtn(false);
+      setTimeout(() => setCardGame(true), 100);
       console.log(decodedQuestions);
     } catch (error) {
       console.log("Error during fetching data with questions", error);
@@ -114,7 +116,7 @@ const Game = () => {
   }, [confirmedAnswers]);
 
   // ----------------------------
-  // * Without useEffect Too many renders
+  // * Without useEffect Too many renders error
   useEffect(() => {
     if (openPopup) {
       if (score === 0) {
@@ -160,7 +162,7 @@ const Game = () => {
   };
 
   return (
-    <main>
+    <main className="globalContainerGame">
       {openPopup && (
         <div className="popup">
           {randomMode && <h1>Random mode </h1>}
@@ -176,7 +178,7 @@ const Game = () => {
           <p>Are you sure you want to publish with this name?</p>
           <p>
             If the name is not appropriate, the administrator may delete your
-            game
+            match
           </p>
           <PopupGame
             playerName={playerName}
@@ -187,53 +189,77 @@ const Game = () => {
           ></PopupGame>
         </div>
       )}
-      <section>
-        {randomMode && <h1>Random mode </h1>}
-        <p>{score} answer correct out of 10</p>
-        <h1>{playerName}</h1>
-        <h1>{difficulty}</h1>
-        <h1>{category.name}</h1>
-        <h1>Are you ready?</h1>
+      <section className="allContainerGame">
         {disableBtn && (
-          <button className="btn" onClick={fetchDataQuestion}>
-            Start!
-          </button>
-        )}
-        {mixedData &&
-          mixedData.map((el, index) => {
-            return (
-              <div className="card" key={index}>
-                <h2>{el.question}</h2>
-                {confirmedAnswers[index] && msgResult[index] === false && (
-                  <h3>The correct answer was: {el.correct_answer}</h3>
-                )}
-                {el.mixedAnswers &&
-                  el.mixedAnswers.map((answer, idx) => {
-                    return (
-                      <div key={idx}>
-                        <input
-                          type="radio"
-                          id={`answer-${idx}`}
-                          name={`question-${index}`}
-                          value={answer}
-                          onChange={() => handleAnswerSelection(index, answer)}
-                          disabled={confirmedAnswers[index]}
-                        />
-                        <label htmlFor={`answer-${idx}`}>{answer}</label>
-                      </div>
-                    );
-                  })}
-
-                <button
-                  className="btn"
-                  onClick={() => checkAnswer(index, el.correct_answer)}
-                  disabled={confirmedAnswers[index]}
-                >
-                  Confirm your test
-                </button>
+          <div className="bannerSelections">
+            {randomMode && <h1>Random mode </h1>}
+            {/* <p>{score} answer correct out of 10</p> */}
+            <div>
+              <h3>Here we go&nbsp;</h3>
+              <h1> {playerName}!</h1>
+            </div>
+            {/* <h2>Are you ready to take on this challenge?</h2> */}
+            <div>
+              <h1>{category.name}</h1>
+              <h1>Level:&nbsp;{difficulty}</h1>
+            </div>
+            {/* THE STYLE OF GENIUS BUTTON and NORMAL BUTTON are in APP.CSS (to do: button component) */}
+            <div className={randomMode ? "btnAndRotation" : ""}>
+              <div className={randomMode ? "btnRotation" : ""}>
+                {/* empty only to use rotation effect */}
               </div>
-            );
-          })}
+              <button
+                className={randomMode ? "btnGeniusNoLamp" : "btnGeneral"}
+                onClick={fetchDataQuestion}
+              >
+                {randomMode ? "Start Genius mode!" : "Start!"}
+              </button>
+            </div>
+          </div>
+        )}
+        <div className="cardContainer">
+          {mixedData &&
+            mixedData.map((el, index) => {
+              return (
+                <div
+                  // className="cardViewGame"
+                  className={`cardHidenGame ${cardGame && "cardViewGame"}`}
+                  key={index}
+                >
+                  <h2 className="answerGame">{el.question}</h2>
+                  {confirmedAnswers[index] && msgResult[index] === false && (
+                    <h3>The correct answer was: {el.correct_answer}</h3>
+                  )}
+                  {el.mixedAnswers &&
+                    el.mixedAnswers.map((answer, idx) => {
+                      return (
+                        <div key={idx}>
+                          <input
+                            type="radio"
+                            id={`answer-${idx}`}
+                            name={`question-${index}`}
+                            value={answer}
+                            onChange={() =>
+                              handleAnswerSelection(index, answer)
+                            }
+                            disabled={confirmedAnswers[index]}
+                          />
+                          <label htmlFor={`answer-${idx}`}>{answer}</label>
+                        </div>
+                      );
+                    })}
+
+                  <button
+                    className="btn"
+                    onClick={() => checkAnswer(index, el.correct_answer)}
+                    disabled={confirmedAnswers[index]}
+                  >
+                    Confirm your test
+                  </button>
+                </div>
+              );
+            })}
+        </div>
       </section>
     </main>
   );

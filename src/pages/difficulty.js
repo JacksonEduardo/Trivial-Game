@@ -16,6 +16,7 @@ const Difficulty = () => {
   } = useGameContext(); // acces to the global context
   const [data, setData] = useState([]);
   const navigate = useNavigate();
+  const [animation, setAnimation] = useState(false);
 
   // code to fetch API to have category and difficulty
   useEffect(() => {
@@ -61,7 +62,8 @@ const Difficulty = () => {
       // Nav only if are selected category and difficulty
       navigate("/game");
     } else {
-      alert("Please select both a category and a difficulty level.");
+      // alert("Please select both a category and a difficulty level.");
+      setAnimation(true);
     }
     setRandomMode(false);
   };
@@ -96,12 +98,26 @@ const Difficulty = () => {
     return { randomNumber, randomDifficulty };
   };
 
+  setTimeout(() => {
+    setAnimation(false);
+  }, 3000);
+
   return (
     <>
       {/* <p>{theme}</p>
       <h3>{playerName}</h3>
       <p>Select your challenge</p> */}
       <main className="difficultyContainer">
+        {/* div to containt animation alert */}
+        <div
+          className={`mascotAlertSelection ${
+            animation ? "mascotAlertSelectionView" : "mascotAlertSelectionHiden"
+          }`}
+        >
+          <div className="alertCatDiffBanner">
+            <p>Select Category and Difficulty</p>
+          </div>
+        </div>
         <section className="selectionContainer">
           <h1>Set Your Challenge!</h1>
           <div className="selectOption">
@@ -134,18 +150,27 @@ const Difficulty = () => {
               <option value="medium">Medium</option>
               <option value="hard">Hard</option>
             </select>
-            <button className="btnEnjoy" onClick={handleStartGame}>
+            <button className="btnGeneral" onClick={handleStartGame}>
               Enjoy the game
             </button>
           </div>
           <section className="randomContainer">
+            <h2 className="sentenceRandom">Do you want to try random mode?</h2>
             <div className="sentenceRandomEmpGenius">
-              <h2 className="sentenceRandom">Up for Random Mode?</h2>
               <div className="empGenius">
                 {/* empty, only to contain img logo */}
               </div>
+              {/* THE STYLE OF GENIUS BUTTON and NORMAL BUTTON are in APP.CSS (to do: button component) */}
+              <div className="btnAndRotation">
+                <div className="btnRotation">
+                  {/* empty only to use rotation effect */}
+                </div>
+                <button
+                  className="btnGeniusNoLamp btnGeniusWithLamp"
+                  onClick={random}
+                ></button>
+              </div>
             </div>
-            <button className="btnGenius" onClick={random}></button>
           </section>
         </section>
       </main>

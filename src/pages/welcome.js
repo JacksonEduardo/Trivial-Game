@@ -59,7 +59,7 @@ const Welcome = () => {
 
   setTimeout(() => {
     setAnimation(false);
-  }, 2000);
+  }, 3000);
 
   // if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
@@ -80,9 +80,6 @@ const Welcome = () => {
           msg ? "mascotteAlertView" : "mascotteAlertHidden"
         }`}
       >
-        <div className="msgMascotteAlert">
-          {/* empty, only to contain mascotte */}
-        </div>
         <div className="msgMascotteBanner">
           <p>Please enter your name</p>
         </div>
@@ -132,7 +129,7 @@ const Welcome = () => {
                 placeholder="Insert your name"
                 maxLength={15}
               />
-              <button className="btnNameInput" onClick={handleStart}>
+              <button className="btnGeneral" onClick={handleStart}>
                 Start
               </button>
             </>
