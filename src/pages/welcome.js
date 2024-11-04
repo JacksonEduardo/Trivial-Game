@@ -20,7 +20,10 @@ const Welcome = () => {
   const [msg, setMsg] = useState(false);
 
   const playerName = (event) => {
-    setName(event.target.value.toUpperCase());
+    const input = event.target.value.toUpperCase();
+    if (input.length <= 15) {
+      setName(input);
+    }
   };
 
   const handleStart = () => {
@@ -143,11 +146,13 @@ const Welcome = () => {
           className={`scoreList ${isOpen ? "scoreListOpen" : "scoreListClose"}`}
           onClick={openClose}
         >
+          <div className="openCloseList">
+            {/* empty, only to contein icon to close and open */}
+          </div>
           <div className="btnTitleTable">
-            <div className="openCloseList"></div>
             <h2>Best Scores</h2>
             {scores.map((el) => (
-              <div className="infoScoreContainer">
+              <div key={el.id} className="infoScoreContainer">
                 <h3 className="nameUser">{el.name}</h3>
                 <div className="dataUser">
                   <div className="categoryInfo">

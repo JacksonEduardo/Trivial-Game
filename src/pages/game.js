@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import he from "he";
 import { PopupGame } from "../components";
-// to save in Firebase database NoSql
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "../firebase";
+// to save in Firebase database NoSql this code is used in popup component
+// import { collection, addDoc } from "firebase/firestore";
+// import { db } from "../firebase";
 
 const Game = () => {
   const { playerName, difficulty, category, randomMode } = useGameContext();
@@ -20,6 +20,8 @@ const Game = () => {
   const [disableBtn, setDisableBtn] = useState(true);
   const [cardGame, setCardGame] = useState(false);
   const [resultCongratulation, setResultCongratulation] = useState("");
+  const [isAnswerSelected, setIsAnswerSelected] = useState([]); // code to check if anwser of every single question is selected
+  const [infoEnd, setInfoEnd] = useState(false); // state to open extra info
 
   // function to mix the answer
   const shuffleArray = (array) => {
@@ -74,6 +76,13 @@ const Game = () => {
       ...prevAnswers,
       [questionIndex]: answer,
     }));
+
+    // enable button if answer of question is selected
+    setIsAnswerSelected((prevSelected) => {
+      const newSelected = [...prevSelected];
+      newSelected[questionIndex] = true;
+      return newSelected;
+    });
   };
 
   //   console.log(selectedAnswer);
@@ -99,8 +108,16 @@ const Game = () => {
     setConfirmedAnswers((prev) => {
       const newConfirmed = [...prev];
       newConfirmed[questionIndex] = true; // check the question like a confirmation
-      //   console.log(newConfirmed);
+      console.log(newConfirmed);
+
       return newConfirmed;
+    });
+
+    // disable button after confirm answer
+    setIsAnswerSelected((prevSelected) => {
+      const newSelected = [...prevSelected];
+      newSelected[questionIndex] = false; // change to false after confirm answer
+      return newSelected;
     });
   };
 
@@ -145,63 +162,72 @@ const Game = () => {
   }, [openPopup, score, randomMode]);
   // --------------------------------
 
-  // FUNNCTION TO SAVE DATA IN NoSql Firebase
-  const saveScore = async () => {
-    try {
-      await addDoc(collection(db, "scores"), {
-        name: playerName,
-        score: score,
-        category: category.name,
-        difficulty: difficulty,
-        timestamp: new Date(),
-      });
-      alert("Your score has been saved");
-    } catch (e) {
-      console.error("Error during saving data", e);
-    }
-  };
+  // FUNNCTION TO SAVE DATA IN NoSql Firebase( this function is in popup component)
+  // const saveScore = async () => {
+  //   try {
+  //     await addDoc(collection(db, "scores"), {
+  //       name: playerName,
+  //       score: score,
+  //       category: category.name,
+  //       difficulty: difficulty,
+  //       timestamp: new Date(),
+  //     });
+  //     alert("Your score has been saved");
+  //   } catch (e) {
+  //     console.error("Error during saving data", e);
+  //   }
+  // };
 
   return (
     <main className="globalContainerGame">
+      {/* popup to have information about match */}
       {openPopup && (
         <div className="popup">
-          {randomMode && <h1>Random mode </h1>}
-          <h1>{playerName}</h1>
-          <p>Final Result</p>
-          <h3>{difficulty}</h3>
-          <h3>{category.name}</h3>
-          <h3>setResultCongratulation</h3>
-          <h4>{resultCongratulation}</h4>
-          <p>{score} answer correct out of 10</p>
+          {/* {randomMode && <h1>Random mode </h1>} */}
+          {/* <h4>{resultCongratulation}</h4>
+          <h1>{playerName}</h1> */}
+          {/* <h3>{difficulty}</h3> */}
+          {/* <h3>{category.name}</h3> */}
+          {/* <p>{score} out of 10 correct!</p>
           <h3>Do you want to save your score?</h3>
-          <button onClick={saveScore}>Save and Publish</button>
-          <p>Are you sure you want to publish with this name?</p>
-          <p>
+          <button className="btnGeneral" onClick={saveScore}>
+            Save and Publish
+          </button>
+          <p className="infoBeforeSave">
+            Are you sure you want to publish with this name?
+          </p>
+          <p className="infoBeforeSave">
             If the name is not appropriate, the administrator may delete your
             match
-          </p>
+          </p> */}
           <PopupGame
             playerName={playerName}
             difficulty={difficulty}
             category={category.name}
             score={score}
             congratulation={resultCongratulation}
+            randomMode={randomMode}
           ></PopupGame>
+        </div>
+      )}
+      {!openPopup && (
+        <div className="testPopup">
+          <h1>informazioni a popup chiuso</h1>
         </div>
       )}
       <section className="allContainerGame">
         {disableBtn && (
           <div className="bannerSelections">
-            {randomMode && <h1>Random mode </h1>}
+            {/* {randomMode && <h1>Random mode </h1>} */}
             {/* <p>{score} answer correct out of 10</p> */}
             <div>
-              <h3>Here we go&nbsp;</h3>
-              <h1> {playerName}!</h1>
+              <h1>Here we go&nbsp;</h1>
+              <h1>{randomMode}</h1>
+              <p className="nameInsideCardGame">{playerName}!</p>
             </div>
-            {/* <h2>Are you ready to take on this challenge?</h2> */}
-            <div>
-              <h1>{category.name}</h1>
-              <h1>Level:&nbsp;{difficulty}</h1>
+            <div className="bgCatLevGame">
+              <h3 className="catLevelGame">{category.name}</h3>
+              <h3 className="catLevelGame">Level:&nbsp;{difficulty}</h3>
             </div>
             {/* THE STYLE OF GENIUS BUTTON and NORMAL BUTTON are in APP.CSS (to do: button component) */}
             <div className={randomMode ? "btnAndRotation" : ""}>
@@ -228,7 +254,7 @@ const Game = () => {
                 >
                   <h2 className="answerGame">{el.question}</h2>
                   {confirmedAnswers[index] && msgResult[index] === false && (
-                    <h3>The correct answer was: {el.correct_answer}</h3>
+                    <h3>Correct answer: {el.correct_answer}</h3>
                   )}
                   {el.mixedAnswers &&
                     el.mixedAnswers.map((answer, idx) => {
@@ -252,9 +278,11 @@ const Game = () => {
                   <button
                     className="btn"
                     onClick={() => checkAnswer(index, el.correct_answer)}
-                    disabled={confirmedAnswers[index]}
+                    disabled={
+                      !isAnswerSelected[index] || confirmedAnswers[index]
+                    }
                   >
-                    Confirm your test
+                    Confirm answer
                   </button>
                 </div>
               );

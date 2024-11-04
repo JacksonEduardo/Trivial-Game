@@ -331,13 +331,13 @@
 }
 .scoreList {
   width: 400px;
-  height: fit-content;
+  height: 80vh;
   padding: 10px;
   background-color: rgb(170, 105, 2);
   position: absolute;
   z-index: 10;
   color: white;
-  border-radius: 10px;
+  border-radius: 0px 10px 10px 10px;
   font-size: 12px;
 }
 .scoreListOpen {
@@ -352,7 +352,8 @@
 }
 .btnTitleTable {
   width: 100%;
-  height: 90%;
+  height: 100%;
+  overflow-y: auto;
   position: relative;
   h2 {
     display: flex;
@@ -372,11 +373,11 @@
   background-color: blueviolet;
   border-radius: 50% 0 0 50%;
   cursor: pointer;
-  left: -60px;
-  top: 50%;
-  transform: translateY(-50%);
+  left: -50px;
+  top: 0;
   position: absolute;
   text-align: center;
+  z-index: 20;
 }
 
 .infoScoreContainer {
@@ -424,6 +425,7 @@
   }
   .scoreList {
     width: 100%;
+    height: 70vh;
   }
   .scoreListClose {
     right: -100%;
