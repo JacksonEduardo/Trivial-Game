@@ -238,7 +238,7 @@ const Game = () => {
                 className={randomMode ? "btnGeniusNoLamp" : "btnGeneral"}
                 onClick={fetchDataQuestion}
               >
-                {randomMode ? "Start Genius mode!" : "Start!"}
+                {randomMode ? "Start Random Mode!" : "Start!"}
               </button>
             </div>
           </div>

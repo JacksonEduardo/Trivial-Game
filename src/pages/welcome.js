@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 // import { Navbar } from "../components";
 import { useGameContext } from "../logic/globalContext";
 // import { night, day, auto } from "../logic/theme";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, limit, orderBy } from "firebase/firestore";
 import { db } from "../firebase";
 
 const Welcome = () => {
@@ -43,7 +43,13 @@ const Welcome = () => {
     const fetchScores = async () => {
       try {
         const scoresCollection = collection(db, "scores");
-        const scoresSnapshot = await getDocs(scoresCollection);
+        // catch only ten records
+        const scoresQuery = query(
+          scoresCollection,
+          orderBy("score", "desc"),
+          limit(10)
+        );
+        const scoresSnapshot = await getDocs(scoresQuery);
         const scoreList = scoresSnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
@@ -163,9 +169,10 @@ const Welcome = () => {
                   </div>
                   <div className="scoreInfo">
                     <p>{el.score}/10</p>
+                    <p>{el.randomMode ? el.score + 2 : ""}</p>
                   </div>
                   <div className="geniousInfo">
-                    <p>Genious</p>
+                    <p>{el.randomMode ? "Random mode +2pts" : "Normal mode"}</p>
                   </div>
                 </div>
               </div>

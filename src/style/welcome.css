@@ -333,7 +333,7 @@
   width: 400px;
   height: 80vh;
   padding: 10px;
-  background-color: rgb(170, 105, 2);
+  background-color: rgb(226, 149, 4);
   position: absolute;
   z-index: 10;
   color: white;
@@ -386,9 +386,14 @@
 }
 
 .nameUser {
-  width: fit-content;
+  width: 100%;
   padding: 5px;
-  background-color: var(--nav);
+  /* background-color: var(--nav); */
+  background: linear-gradient(
+    90deg,
+    var(--nav) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
   border-radius: 5px 5px 0 0;
 }
 .dataUser {
@@ -401,17 +406,19 @@
 .categoryInfo {
   width: 55%;
   padding: 5px;
+  margin: auto;
 }
 .dificultyInfo {
   width: 15%;
   padding: 5px;
   text-align: center;
+  margin: auto;
 }
 .scoreInfo {
   width: 15%;
   padding: 5px;
-  /* background-color: rgb(147, 80, 255); */
   text-align: center;
+  margin: auto;
 }
 .geniousInfo {
   width: 15%;
