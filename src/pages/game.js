@@ -21,7 +21,7 @@ const Game = () => {
   const [cardGame, setCardGame] = useState(false);
   const [resultCongratulation, setResultCongratulation] = useState("");
   const [isAnswerSelected, setIsAnswerSelected] = useState([]); // code to check if anwser of every single question is selected
-  const [infoEnd, setInfoEnd] = useState(false); // state to open extra info
+  // const [infoEnd, setInfoEnd] = useState(false); // state to open extra info
 
   // function to mix the answer
   const shuffleArray = (array) => {
@@ -210,11 +210,11 @@ const Game = () => {
           ></PopupGame>
         </div>
       )}
-      {!openPopup && (
+      {/* {!openPopup && (
         <div className="testPopup">
           <h1>informazioni a popup chiuso</h1>
         </div>
-      )}
+      )} */}
       <section className="allContainerGame">
         {disableBtn && (
           <div className="bannerSelections">
