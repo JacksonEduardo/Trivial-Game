@@ -15,8 +15,16 @@
   width: 100%;
   min-height: 100vh;
   max-height: fit-content;
-  /* background-color: var(--bgBody); */
-  /* transition: var(--transition); */
+  /* background-color: aqua; */
+  transition: var(--transition);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.bgGlobalBlack {
+  background-image: url(../mediaSvg/bgGameBlack.svg);
+}
+.bgGlobalWhite {
+  background-image: url(../mediaSvg/bgGameWhite.svg);
 }
 
 .allContainerGame {
@@ -76,42 +84,118 @@
   );
 }
 
-/* .resultContainer {
-  width: 150px;
-} */
-
 .cardContainer {
   width: 100%;
   height: 100%;
   padding-top: 80px;
-  /* background-color: aqua; */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .cardHidenGame {
-  width: 80%;
+  /* width: 80%; */
   max-height: 0px;
-  /* margin: 20px; */
   padding: 0px;
-  /* background-color: bisque; */
-  /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.177); */
   overflow: hidden;
   /* transition: max-height 3s ease-in; */
+  position: relative;
+  opacity: 0;
 }
 .cardViewGame {
-  width: 80%;
+  opacity: 1;
+  width: 60%;
   max-height: 450px;
+  /* min-height: 200px; */
   margin: 20px;
   padding: 10px;
   border-radius: 10px;
-  background-color: bisque;
+  background-color: rgb(241, 202, 155);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.177);
   transition: max-height 1.5s ease-in, padding 1.5s ease-in;
 }
-.answerGame {
+.visibility {
+  overflow: visible;
+}
+.TitleAnswerGame {
+  width: 70%;
   text-align: center;
+  /* background-color: red; */
+}
+.answerAndBtnConfirm {
+  /* background-color: rgb(237, 202, 149); */
+  position: relative;
+}
+
+/* CSS Test */
+.answerRadio {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 8px;
+  padding-left: 20px;
+  transition: color 0.2s;
+  /* background-color: aqua; */
+}
+
+.custom-radio {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #007bff;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  transition: border-color 0.2s;
+}
+
+.custom-radio .radio-dot {
+  width: 12px;
+  height: 12px;
+  background-color: #007bff;
+  border-radius: 50%;
+  transition: opacity 0.2s;
+  opacity: 0;
+}
+
+.answerRadio.checked .custom-radio {
+  border-color: #0056b3;
+}
+
+.answerRadio.checked .custom-radio .radio-dot {
+  opacity: 1;
+}
+
+.answerRadio.checked .label {
+  color: #0056b3;
+  font-weight: bold;
+}
+
+/* CSS Test */
+
+.answerRadio {
+  width: 70%;
+  height: 30px;
+  /* background-color: aqua; */
+}
+
+.btnConfirmAnswerHiden {
+  width: 180px;
+  height: 130px;
+  background-color: plum;
+  border: none;
+  border-radius: 10px;
+  position: absolute;
+  right: 50px;
+  top: 20px;
+  z-index: 5;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.btnConfirmAnswerView {
+  right: -40px;
+  transition: 5s ease;
 }
 @media (max-width: 957px) {
   .bannerSelections {
@@ -123,6 +207,26 @@
   }
   .catLevelGame {
     font-size: 0.9rem;
+  }
+  .cardViewGame {
+    width: 90%;
+  }
+  .TitleAnswerGame {
+    width: 90%;
+  }
+  .answerRadio {
+    width: 100%;
+  }
+  .btnConfirmAnswerHiden {
+    width: 200px;
+    height: 50px;
+    top: auto;
+    bottom: -25px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .cardViewGame {
+    padding-bottom: 30px;
   }
 }
 .testPopup {

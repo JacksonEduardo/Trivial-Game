@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="1830" height="2629" viewBox="0 0 1830 2629" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g id="SingleElement">
+    <rect id="Rectangle" width="1830" height="2629" fill="#DCEBDE" fill-rule="evenodd" />
+    <path id="Rectangle" d="M0 0L909 0C909 0 575.5 308.335 575.5 965.585C575.5 1622.84 909 2629 909 2629L0 2629L0 0Z" fill="#D3E3D5" fill-rule="evenodd" transform="translate(249 0)" />
+    <path id="Rectangle" d="M0 0L909 0C909 0 575.5 308.335 575.5 965.585C575.5 1622.84 909 2629 909 2629L0 2629L0 0Z" fill="#CFDDD1" fill-rule="evenodd" transform="translate(137 0)" />
+    <path id="Rectangle" d="M0 0L909 0C909 0 575.5 308.335 575.5 965.585C575.5 1622.84 909 2629 909 2629L0 2629L0 0Z" fill="#C6D3C7" fill-rule="evenodd" />
+  </g>
+</svg>

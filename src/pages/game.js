@@ -4,12 +4,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import he from "he";
 import { PopupGame } from "../components";
-// to save in Firebase database NoSql this code is used in popup component
-// import { collection, addDoc } from "firebase/firestore";
-// import { db } from "../firebase";
 
 const Game = () => {
-  const { playerName, difficulty, category, randomMode } = useGameContext();
+  const { playerName, difficulty, category, randomMode, theme } =
+    useGameContext();
   const [data, setData] = useState([]);
   const [mixedData, setMixedData] = useState([]);
   const [selectedAnswer, setSelectedAnswer] = useState({});
@@ -21,7 +19,7 @@ const Game = () => {
   const [cardGame, setCardGame] = useState(false);
   const [resultCongratulation, setResultCongratulation] = useState("");
   const [isAnswerSelected, setIsAnswerSelected] = useState([]); // code to check if anwser of every single question is selected
-  // const [infoEnd, setInfoEnd] = useState(false); // state to open extra info
+  const [visibility, setVisibility] = useState(false); // code to apply visibility in btn confirm
 
   // function to mix the answer
   const shuffleArray = (array) => {
@@ -33,7 +31,7 @@ const Game = () => {
       const response = await axios.get(
         `https://opentdb.com/api.php?amount=10&category=${category.id}&difficulty=${difficulty}&type=multiple`
       );
-      //   decode Html entities in questions
+      // decode Html entities in questions
       const decodedQuestions = response.data.results.map((question) => {
         return {
           ...question,
@@ -47,6 +45,7 @@ const Game = () => {
       setData(decodedQuestions);
       setDisableBtn(false);
       setTimeout(() => setCardGame(true), 100);
+      setTimeout(() => setVisibility(true), 1500);
       console.log(decodedQuestions);
     } catch (error) {
       console.log("Error during fetching data with questions", error);
@@ -84,11 +83,6 @@ const Game = () => {
       return newSelected;
     });
   };
-
-  //   console.log(selectedAnswer);
-
-  // let test = 10;
-  // const testRandom = false;
 
   const checkAnswer = (questionIndex, correctAnswer) => {
     const selected = selectedAnswer[questionIndex];
@@ -162,44 +156,15 @@ const Game = () => {
   }, [openPopup, score, randomMode]);
   // --------------------------------
 
-  // FUNNCTION TO SAVE DATA IN NoSql Firebase( this function is in popup component)
-  // const saveScore = async () => {
-  //   try {
-  //     await addDoc(collection(db, "scores"), {
-  //       name: playerName,
-  //       score: score,
-  //       category: category.name,
-  //       difficulty: difficulty,
-  //       timestamp: new Date(),
-  //     });
-  //     alert("Your score has been saved");
-  //   } catch (e) {
-  //     console.error("Error during saving data", e);
-  //   }
-  // };
-
   return (
-    <main className="globalContainerGame">
+    <main
+      className={`globalContainerGame ${
+        theme === "light" ? "bgGlobalWhite" : "bgGlobalBlack"
+      } `}
+    >
       {/* popup to have information about match */}
       {openPopup && (
         <div className="popup">
-          {/* {randomMode && <h1>Random mode </h1>} */}
-          {/* <h4>{resultCongratulation}</h4>
-          <h1>{playerName}</h1> */}
-          {/* <h3>{difficulty}</h3> */}
-          {/* <h3>{category.name}</h3> */}
-          {/* <p>{score} out of 10 correct!</p>
-          <h3>Do you want to save your score?</h3>
-          <button className="btnGeneral" onClick={saveScore}>
-            Save and Publish
-          </button>
-          <p className="infoBeforeSave">
-            Are you sure you want to publish with this name?
-          </p>
-          <p className="infoBeforeSave">
-            If the name is not appropriate, the administrator may delete your
-            match
-          </p> */}
           <PopupGame
             playerName={playerName}
             difficulty={difficulty}
@@ -210,17 +175,11 @@ const Game = () => {
           ></PopupGame>
         </div>
       )}
-      {/* {!openPopup && (
-        <div className="testPopup">
-          <h1>informazioni a popup chiuso</h1>
-        </div>
-      )} */}
       <section className="allContainerGame">
         {disableBtn && (
           <div className="bannerSelections">
-            {/* {randomMode && <h1>Random mode </h1>} */}
-            {/* <p>{score} answer correct out of 10</p> */}
             <div>
+              <p>{theme}</p>
               <h1>Here we go&nbsp;</h1>
               <h1>{randomMode}</h1>
               <p className="nameInsideCardGame">{playerName}!</p>
@@ -248,35 +207,39 @@ const Game = () => {
             mixedData.map((el, index) => {
               return (
                 <div
-                  // className="cardViewGame"
-                  className={`cardHidenGame ${cardGame && "cardViewGame"}`}
+                  className={`cardHidenGame ${cardGame && "cardViewGame"} ${
+                    visibility && "visibility"
+                  }`}
                   key={index}
                 >
-                  <h2 className="answerGame">{el.question}</h2>
+                  <h3 className="TitleAnswerGame">{el.question}</h3>
                   {confirmedAnswers[index] && msgResult[index] === false && (
                     <h3>Correct answer: {el.correct_answer}</h3>
                   )}
-                  {el.mixedAnswers &&
-                    el.mixedAnswers.map((answer, idx) => {
-                      return (
-                        <div key={idx}>
-                          <input
-                            type="radio"
-                            id={`answer-${idx}`}
-                            name={`question-${index}`}
-                            value={answer}
-                            onChange={() =>
-                              handleAnswerSelection(index, answer)
-                            }
-                            disabled={confirmedAnswers[index]}
-                          />
-                          <label htmlFor={`answer-${idx}`}>{answer}</label>
-                        </div>
-                      );
-                    })}
-
+                  <div className="answerAndBtnConfirm">
+                    {el.mixedAnswers &&
+                      el.mixedAnswers.map((answer, idx) => {
+                        const isChecked = selectedAnswer[index] === answer;
+                        return (
+                          <div
+                            key={idx}
+                            className={`answerRadio ${
+                              isChecked ? "checked" : ""
+                            }`}
+                            onClick={() => handleAnswerSelection(index, answer)}
+                          >
+                            <div className="custom-radio">
+                              {isChecked && <div className="radio-dot" />}
+                            </div>
+                            <span className="label">{answer}</span>
+                          </div>
+                        );
+                      })}
+                  </div>
                   <button
-                    className="btn"
+                    className={`btnConfirmAnswerHiden ${
+                      cardGame && "btnConfirmAnswerView"
+                    }`}
                     onClick={() => checkAnswer(index, el.correct_answer)}
                     disabled={
                       !isAnswerSelected[index] || confirmedAnswers[index]
