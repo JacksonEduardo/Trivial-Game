@@ -45,7 +45,7 @@ const Game = () => {
       setData(decodedQuestions);
       setDisableBtn(false);
       setTimeout(() => setCardGame(true), 100);
-      setTimeout(() => setVisibility(true), 1500);
+      setTimeout(() => setVisibility(true), 1000);
       console.log(decodedQuestions);
     } catch (error) {
       console.log("Error during fetching data with questions", error);
