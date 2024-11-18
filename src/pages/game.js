@@ -179,7 +179,6 @@ const Game = () => {
         {disableBtn && (
           <div className="bannerSelections">
             <div>
-              <p>{theme}</p>
               <h1>Here we go&nbsp;</h1>
               <h1>{randomMode}</h1>
               <p className="nameInsideCardGame">{playerName}!</p>
@@ -213,9 +212,14 @@ const Game = () => {
                   key={index}
                 >
                   <h3 className="TitleAnswerGame">{el.question}</h3>
-                  {confirmedAnswers[index] && msgResult[index] === false && (
-                    <h3>Correct answer: {el.correct_answer}</h3>
-                  )}
+                  <div className="wrongAnswer">
+                    {confirmedAnswers[index] && msgResult[index] === false && (
+                      <h4>Correct answer: {el.correct_answer}</h4>
+                    )}
+                    {confirmedAnswers[index] && msgResult[index] !== false && (
+                      <h4>Bravissimo</h4>
+                    )}
+                  </div>
                   <div className="answerAndBtnConfirm">
                     {el.mixedAnswers &&
                       el.mixedAnswers.map((answer, idx) => {

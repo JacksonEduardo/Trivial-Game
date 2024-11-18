@@ -2,8 +2,8 @@
 <svg width="1830" height="2629" viewBox="0 0 1830 2629" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g id="SingleElement">
     <rect id="Rectangle" width="1830" height="2629" fill="#071B0A" fill-rule="evenodd" />
-    <path id="Rectangle" d="M0 0L909 0C909 0 575.5 308.335 575.5 965.585C575.5 1622.84 909 2629 909 2629L0 2629L0 0Z" fill="#0B2A10" fill-rule="evenodd" transform="translate(249 0)" />
-    <path id="Rectangle" d="M0 0L909 0C909 0 575.5 308.335 575.5 965.585C575.5 1622.84 909 2629 909 2629L0 2629L0 0Z" fill="#0C3412" fill-rule="evenodd" transform="translate(137 0)" />
-    <path id="Rectangle" d="M0 0L909 0C909 0 575.5 308.335 575.5 965.585C575.5 1622.84 909 2629 909 2629L0 2629L0 0Z" fill="#0E3B14" fill-rule="evenodd" />
+    <path id="Rectangle" d="M0 0L909 0C909 0 286.5 116.75 286.5 774C286.5 1431.25 909 2629 909 2629L0 2629L0 0Z" fill="#0E290A" fill-rule="evenodd" transform="translate(284 0)" />
+    <path id="Rectangle" d="M0 0L909 0C909 0 286.5 116.75 286.5 774C286.5 1431.25 909 2629 909 2629L0 2629L0 0Z" fill="#0C3111" fill-rule="evenodd" transform="translate(156 0)" />
+    <path id="Rectangle" d="M0 0L909 0C909 0 286.5 116.75 286.5 774C286.5 1431.25 909 2629 909 2629L0 2629L0 0Z" fill="#143B14" fill-rule="evenodd" />
   </g>
 </svg>
