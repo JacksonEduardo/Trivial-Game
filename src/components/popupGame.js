@@ -19,14 +19,13 @@ const PopupGame = ({
   const { setPlayerName } = useGameContext(); // code to change name in Global context
   const [newNeme, setNewName] = useState(""); // state to save new name
 
-  // function to control new name
+  // function to control edit name
   const handleInputNewName = (e) => {
     const input = e.target.value.toUpperCase();
     if (input.length <= 15) {
       setNewName(input);
     }
   };
-
   // function to save new name in global context
   const handleChangeName = () => {
     setPlayerName(newNeme);

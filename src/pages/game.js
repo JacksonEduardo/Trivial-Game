@@ -3,7 +3,7 @@ import { useGameContext } from "../logic/globalContext"; // import the context t
 import { useEffect, useState } from "react";
 import axios from "axios";
 import he from "he";
-import { PopupGame } from "../components";
+import { PopupGame, ScoreList } from "../components";
 
 const Game = () => {
   const { playerName, difficulty, category, randomMode, theme } =
@@ -46,7 +46,7 @@ const Game = () => {
       setDisableBtn(false);
       setTimeout(() => setCardGame(true), 100);
       setTimeout(() => setVisibility(true), 1000);
-      console.log(decodedQuestions);
+      // console.log(decodedQuestions);
     } catch (error) {
       console.log("Error during fetching data with questions", error);
     }
@@ -102,8 +102,9 @@ const Game = () => {
     setConfirmedAnswers((prev) => {
       const newConfirmed = [...prev];
       newConfirmed[questionIndex] = true; // check the question like a confirmation
-      console.log(newConfirmed);
+      // console.log(newConfirmed);
 
+      // console.log(newConfirmed);
       return newConfirmed;
     });
 
@@ -157,106 +158,119 @@ const Game = () => {
   // --------------------------------
 
   return (
-    <main
-      className={`globalContainerGame ${
-        theme === "light" ? "bgGlobalWhite" : "bgGlobalBlack"
-      } `}
-    >
-      {/* popup to have information about match */}
-      {openPopup && (
-        <div className="popup">
-          <PopupGame
-            playerName={playerName}
-            difficulty={difficulty}
-            category={category.name}
-            score={score}
-            congratulation={resultCongratulation}
-            randomMode={randomMode}
-          ></PopupGame>
-        </div>
-      )}
-      <section className="allContainerGame">
-        {disableBtn && (
-          <div className="bannerSelections">
-            <div>
-              <h1>Here we go&nbsp;</h1>
-              <h1>{randomMode}</h1>
-              <p className="nameInsideCardGame">{playerName}!</p>
-            </div>
-            <div className="bgCatLevGame">
-              <h3 className="catLevelGame">{category.name}</h3>
-              <h3 className="catLevelGame">Level:&nbsp;{difficulty}</h3>
-            </div>
-            {/* THE STYLE OF GENIUS BUTTON and NORMAL BUTTON are in APP.CSS (to do: button component) */}
-            <div className={randomMode ? "btnAndRotation" : ""}>
-              <div className={randomMode ? "btnRotation" : ""}>
-                {/* empty only to use rotation effect */}
-              </div>
-              <button
-                className={randomMode ? "btnGeniusNoLamp" : "btnGeneral"}
-                onClick={fetchDataQuestion}
-              >
-                {randomMode ? "Start Random Mode!" : "Start!"}
-              </button>
-            </div>
+    <>
+      <main
+        className={`globalContainerGame ${
+          theme === "light" ? "bgGlobalWhite" : "bgGlobalBlack"
+        } `}
+      >
+        {/* popup to have information about match */}
+        {openPopup && (
+          <div className="popup">
+            <PopupGame
+              playerName={playerName}
+              difficulty={difficulty}
+              category={category.name}
+              score={score}
+              congratulation={resultCongratulation}
+              randomMode={randomMode}
+            ></PopupGame>
           </div>
         )}
-        <div className="cardContainer">
-          {mixedData &&
-            mixedData.map((el, index) => {
-              return (
-                <div
-                  className={`cardHidenGame ${cardGame && "cardViewGame"} ${
-                    visibility && "visibility"
-                  }`}
-                  key={index}
-                >
-                  <h3 className="TitleAnswerGame">{el.question}</h3>
-                  <div className="wrongAnswer">
-                    {confirmedAnswers[index] && msgResult[index] === false && (
-                      <h4>Correct answer: {el.correct_answer}</h4>
-                    )}
-                    {confirmedAnswers[index] && msgResult[index] !== false && (
-                      <h4>Bravissimo</h4>
-                    )}
-                  </div>
-                  <div className="answerAndBtnConfirm">
-                    {el.mixedAnswers &&
-                      el.mixedAnswers.map((answer, idx) => {
-                        const isChecked = selectedAnswer[index] === answer;
-                        return (
-                          <div
-                            key={idx}
-                            className={`answerRadio ${
-                              isChecked ? "checked" : ""
-                            }`}
-                            onClick={() => handleAnswerSelection(index, answer)}
-                          >
-                            <div className="custom-radio">
-                              {isChecked && <div className="radio-dot" />}
-                            </div>
-                            <span className="label">{answer}</span>
-                          </div>
-                        );
-                      })}
-                  </div>
-                  <button
-                    className={`btnConfirmAnswerHiden ${
-                      cardGame && "btnConfirmAnswerView"
-                    }`}
-                    onClick={() => checkAnswer(index, el.correct_answer)}
-                    disabled={
-                      !isAnswerSelected[index] || confirmedAnswers[index]
-                    }
-                  >
-                    Confirm answer
-                  </button>
+        <section className="allContainerGame">
+          {disableBtn && (
+            <div className="bannerSelections">
+              <div>
+                <h1>Here we go&nbsp;</h1>
+                <h1>{randomMode}</h1>
+                <p className="nameInsideCardGame">{playerName}!</p>
+              </div>
+              <div className="bgCatLevGame">
+                <h3 className="catLevelGame">{category.name}</h3>
+                <h3 className="catLevelGame">Level:&nbsp;{difficulty}</h3>
+              </div>
+              {/* THE STYLE OF GENIUS BUTTON and NORMAL BUTTON are in APP.CSS (to do: button component) */}
+              <div className={randomMode ? "btnAndRotation" : ""}>
+                <div className={randomMode ? "btnRotation" : ""}>
+                  {/* empty only to use rotation effect */}
                 </div>
-              );
-            })}
-        </div>
-      </section>
-    </main>
+                <button
+                  className={randomMode ? "btnGeniusNoLamp" : "btnGeneral"}
+                  onClick={fetchDataQuestion}
+                >
+                  {randomMode ? "Start Random Mode!" : "Start!"}
+                </button>
+              </div>
+            </div>
+          )}
+          <div className="cardContainer">
+            {mixedData &&
+              mixedData.map((el, index) => {
+                return (
+                  <div
+                    className={`cardHidenGame ${cardGame && "cardViewGame"} ${
+                      visibility && "visibility"
+                    }`}
+                    key={index}
+                  >
+                    <h3 className="TitleAnswerGame">{el.question}</h3>
+
+                    {/* Banner wrong answer */}
+                    {confirmedAnswers[index] && msgResult[index] === false && (
+                      <div className="colorWrong bannerResult">
+                        <h3>Correct answer: {el.correct_answer}</h3>
+                      </div>
+                    )}
+
+                    {/* Banner correct answer */}
+                    {confirmedAnswers[index] && msgResult[index] !== false && (
+                      <div className="colorCorrect bannerResult">
+                        <h2>Good Job!</h2>
+                      </div>
+                    )}
+                    <div className="answerAndBtnConfirm">
+                      {el.mixedAnswers &&
+                        el.mixedAnswers.map((answer, idx) => {
+                          const isChecked = selectedAnswer[index] === answer;
+                          return (
+                            <div
+                              key={idx}
+                              className={`answerRadio ${
+                                isChecked ? "checked" : ""
+                              }`}
+                              onClick={() =>
+                                handleAnswerSelection(index, answer)
+                              }
+                            >
+                              <div className="custom-radio">
+                                {isChecked && <div className="radio-dot" />}
+                              </div>
+                              <span className="label">{answer}</span>
+                            </div>
+                          );
+                        })}
+                    </div>
+                    {!confirmedAnswers[index] && (
+                      <button
+                        className={`btnConfirmAnswerHiden ${
+                          cardGame && "btnConfirmAnswerView"
+                        }`}
+                        onClick={() => checkAnswer(index, el.correct_answer)}
+                        disabled={
+                          !isAnswerSelected[index] || confirmedAnswers[index]
+                        }
+                      >
+                        Confirm answer
+                      </button>
+                    )}
+                  </div>
+                );
+              })}
+          </div>
+        </section>
+        <ScoreList></ScoreList>
+      </main>
+    </>
   );
 };
 

@@ -311,16 +311,7 @@
   border: none;
   animation: nameInput 1s linear;
 }
-/* .btnNameInput {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: none;
-  background-color: cadetblue;
-  cursor: pointer;
-  animation: nameInput 1s linear;
-  color: white;
-} */
+
 @keyframes nameInput {
   0% {
     opacity: 0;
@@ -333,12 +324,15 @@
   width: 400px;
   height: 80vh;
   padding: 10px;
-  background-color: rgb(226, 149, 4);
+  background-color: rgb(200, 146, 45);
   position: absolute;
   z-index: 10;
   color: white;
   border-radius: 0px 10px 10px 10px;
   font-size: 12px;
+}
+.scoreList::-webkit-scrollbar {
+  display: none; /* Nasconde la barra in Chrome, Safari e Edge moderno */
 }
 .scoreListOpen {
   top: 100px;
@@ -355,6 +349,8 @@
   height: 100%;
   overflow-y: auto;
   position: relative;
+  scrollbar-width: none; /* Nasconde la barra in Firefox */
+  -ms-overflow-style: none; /* Nasconde la barra in IE e Edge */
   h2 {
     display: flex;
     align-items: center;

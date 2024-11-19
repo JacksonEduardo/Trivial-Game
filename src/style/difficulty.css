@@ -3,14 +3,15 @@
   height: 100vh;
   background-color: var(--bgBody);
   transition: var(--transition);
-  color: white;
+  position: relative;
+  color: var(--text);
+  overflow: hidden;
 }
 
 .mascotAlertSelection {
   width: 180px;
   height: 100px;
   position: absolute;
-  /* background-color: aqua; */
   background-image: url(../mediaSvg/empAlert.svg);
   background-repeat: no-repeat;
   background-size: cover;

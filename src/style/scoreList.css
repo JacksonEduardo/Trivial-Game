@@ -1,0 +1,112 @@
+.scoreList {
+  width: 400px;
+  height: 80vh;
+  padding: 10px;
+  background-color: rgb(200, 146, 45);
+  position: absolute;
+  z-index: 10;
+  color: white;
+  border-radius: 0px 10px 10px 10px;
+  font-size: 12px;
+}
+
+.scoreListOpen {
+  top: 100px;
+  right: 0px;
+  transition: 1s ease-in-out right;
+}
+.scoreListClose {
+  top: 100px;
+  right: -400px;
+  transition: 1s ease-in-out right;
+}
+.openCloseList {
+  width: 50px;
+  height: 50px;
+  background-image: url(../mediaSvg/openBanner.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: blueviolet;
+  border-radius: 50% 0 0 50%;
+  cursor: pointer;
+  left: -50px;
+  top: 0;
+  position: absolute;
+  text-align: center;
+  z-index: 20;
+}
+.btnTitleTable {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  position: relative;
+  scrollbar-width: none; /* Nasconde la barra in Firefox */
+  -ms-overflow-style: none; /* Nasconde la barra in IE e Edge */
+  h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+  }
+}
+
+.infoScoreContainer {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.nameUser {
+  width: 100%;
+  padding: 5px;
+  /* background-color: var(--nav); */
+  background: linear-gradient(
+    90deg,
+    var(--nav) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-radius: 5px 5px 0 0;
+}
+.dataUser {
+  padding: 5px 0;
+  border-radius: 0 5px 5px 5px;
+  background-color: var(--nav);
+  display: flex;
+  justify-content: space-around;
+}
+.categoryInfo {
+  width: 55%;
+  padding: 5px;
+  margin: auto;
+}
+.dificultyInfo {
+  width: 15%;
+  padding: 5px;
+  text-align: center;
+  margin: auto;
+}
+.scoreInfo {
+  width: 15%;
+  padding: 5px;
+  text-align: center;
+  margin: auto;
+}
+.geniousInfo {
+  width: 15%;
+  padding: 5px;
+  /* background-color: coral; */
+  text-align: center;
+}
+@media (max-width: 957px) {
+  .cardWelcomeContainer {
+    top: 75%;
+  }
+  .scoreList {
+    width: 100%;
+    height: 70vh;
+  }
+  .scoreListClose {
+    right: -100%;
+  }
+}

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useGameContext } from "../logic/globalContext"; // import the context to use the name
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { ScoreList } from "../components";
 
 const Difficulty = () => {
   const {
@@ -104,10 +105,8 @@ const Difficulty = () => {
 
   return (
     <>
-      {/* <p>{theme}</p>
-      <h3>{playerName}</h3>
-      <p>Select your challenge</p> */}
       <main className="difficultyContainer">
+        <ScoreList></ScoreList>
         {/* div to containt animation alert */}
         <div
           className={`mascotAlertSelection ${

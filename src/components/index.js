@@ -1,3 +1,4 @@
 import PopupGame from "./popupGame";
 import Navbar from "./navbar";
-export { PopupGame, Navbar };
+import ScoreList from "./scoreList";
+export { PopupGame, Navbar, ScoreList };

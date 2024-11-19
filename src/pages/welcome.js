@@ -1,22 +1,21 @@
 import "../style/welcome.css";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-// import { Navbar } from "../components";
 import { useGameContext } from "../logic/globalContext";
-// import { night, day, auto } from "../logic/theme";
 import { collection, getDocs, query, limit, orderBy } from "firebase/firestore";
 import { db } from "../firebase";
+import { ScoreList } from "../components";
 
 const Welcome = () => {
   // const [popup, setPopup] = useState(false);
   const { setPlayerName } = useGameContext();
   const [name, setName] = useState("");
   const navigate = useNavigate();
-  const [scores, setScores] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [scores, setScores] = useState([]);
+  // const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [animation, setAnimation] = useState(true);
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
   const [msg, setMsg] = useState(false);
 
   const playerName = (event) => {
@@ -54,14 +53,15 @@ const Welcome = () => {
           id: doc.id,
           ...doc.data(),
         }));
-        setScores(scoreList);
+        // setScores(scoreList);
         console.log(scoreList);
       } catch (e) {
         setError("Error importing data");
         console.log("Error fetching scores", e);
-      } finally {
-        setLoading(false);
       }
+      // finally {
+      //   setLoading(false);
+      // }
     };
     fetchScores();
   }, []);
@@ -76,10 +76,10 @@ const Welcome = () => {
   // code to open score list
 
   // this method is used only when have only one btn action
-  function openClose() {
-    setIsOpen((prev) => !prev);
-    console.log("click per aprire");
-  }
+  // function openClose() {
+  //   setIsOpen((prev) => !prev);
+  //   console.log("click per aprire");
+  // }
 
   return (
     <main className="welcomeContainer">
@@ -100,9 +100,7 @@ const Welcome = () => {
         <div className="cardWelcome Two"></div>
         <div className="cardWelcome One"></div>
       </div>
-      {/* <div className={`msgAlert ${msg ? "msgAlertOpen" : "msgAlertClose"}`}>
-        <p>Please enter your name</p>
-        </div> */}
+
       <section className="welcomeSection">
         <div className="titleUpDown">
           {animation ? (
@@ -122,11 +120,7 @@ const Welcome = () => {
             <h1>Gam</h1>
           </div>
         </div>
-        {/* <div className="nameInputContainer"> */}
         <div className={`test2 ${animation ? "" : "nameInputContainer"}`}>
-          {/* <div className={`msgAlert ${msg ? "msgAlertOpen" : "msgAlertClose"}`}>
-            <p>Please enter your name</p>
-          </div> */}
           {!animation && (
             <>
               <input
@@ -145,43 +139,45 @@ const Welcome = () => {
           )}
         </div>
       </section>
-      {loading ? (
-        <p>Loadgin</p>
-      ) : (
-        <section
-          className={`scoreList ${isOpen ? "scoreListOpen" : "scoreListClose"}`}
-          onClick={openClose}
-        >
-          <div className="openCloseList">
-            {/* empty, only to contein icon to close and open */}
-          </div>
-          <div className="btnTitleTable">
-            <h2>Best Scores</h2>
-            {scores.map((el) => (
-              <div key={el.id} className="infoScoreContainer">
-                <h3 className="nameUser">{el.name}</h3>
-                <div className="dataUser">
-                  <div className="categoryInfo">
-                    <p>{el.category}</p>
-                  </div>
-                  <div className="dificultyInfo">
-                    <p>{el.difficulty}</p>
-                  </div>
-                  <div className="scoreInfo">
-                    <p>{el.score}/10</p>
-                    <p>{el.randomMode ? el.score + 2 : ""}</p>
-                  </div>
-                  <div className="geniousInfo">
-                    <p>{el.randomMode ? "Random mode +2pts" : "Normal mode"}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
+      <ScoreList></ScoreList>
     </main>
   );
 };
 
 export default Welcome;
+
+// {loading ? (
+//   <p>Loading</p>
+// ) : (
+//   <section
+//     className={`scoreList ${isOpen ? "scoreListOpen" : "scoreListClose"}`}
+//     onClick={openClose}
+//   >
+//     <div className="openCloseList">
+//       {/* empty, only to contein icon to close and open */}
+//     </div>
+//     <div className="btnTitleTable">
+//       <h2>Best Scores</h2>
+//       {scores.map((el) => (
+//         <div key={el.id} className="infoScoreContainer">
+//           <h3 className="nameUser">{el.name}</h3>
+//           <div className="dataUser">
+//             <div className="categoryInfo">
+//               <p>{el.category}</p>
+//             </div>
+//             <div className="dificultyInfo">
+//               <p>{el.difficulty}</p>
+//             </div>
+//             <div className="scoreInfo">
+//               <p>{el.score}/10</p>
+//               <p>{el.randomMode ? el.score + 2 : ""}</p>
+//             </div>
+//             <div className="geniousInfo">
+//               <p>{el.randomMode ? "Random mode +2pts" : "Normal mode"}</p>
+//             </div>
+//           </div>
+//         </div>
+//       ))}
+//     </div>
+//   </section>
+// )}
