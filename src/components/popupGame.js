@@ -1,7 +1,7 @@
 // import { useState } from "react";
 
 import "../style/popupGame.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // to save in Firebase database NoSql
 import { collection, addDoc } from "firebase/firestore";
@@ -18,6 +18,13 @@ const PopupGame = ({
 }) => {
   const { setPlayerName } = useGameContext(); // code to change name in Global context
   const [newNeme, setNewName] = useState(""); // state to save new name
+  const [confirmSave, setConfirmSave] = useState(false);
+
+  const [positions, setPositions] = useState({
+    infoSave: 0,
+    saveMsg: 300,
+    scoreList: 600,
+  });
 
   // function to control edit name
   const handleInputNewName = (e) => {
@@ -42,41 +49,80 @@ const PopupGame = ({
         randomMode: randomMode,
         timestamp: new Date(),
       });
-      alert("Your score has been saved");
+      // alert("Your score has been saved");
+      setConfirmSave(true);
     } catch (e) {
       console.error("Error during saving data", e);
     }
   };
+
+  // Gestione aggiornamento posizioni con `useEffect`
+  useEffect(() => {
+    if (confirmSave) {
+      setPositions({ infoSave: -300, saveMsg: 0, scoreList: 300 });
+
+      const timeout = setTimeout(() => {
+        setPositions({ infoSave: -600, saveMsg: -300, scoreList: 0 });
+      }, 3000);
+
+      // Pulisce il timeout in caso di smontaggio del componente
+      return () => clearTimeout(timeout);
+    }
+  }, [confirmSave]);
+
   return (
     <div className="popupGameContainer">
-      <h3>{congratulation}</h3>
-      <h3>{playerName}</h3>
-      {/* <h3>{difficulty}</h3> */}
-      {/* <h3>{category}</h3> */}
-      <h3>{score} out of 10 correct!</h3>
-      <h3>Do you want to save your score?</h3>
-      <button className="btnGeneral" onClick={saveScore}>
-        Save and Publish
-      </button>
-      <p className="infoBeforeSave">
-        Are you sure you want to publish using this name?
-      </p>
-      <p className="infoBeforeSave">
-        If the name is deemed inappropriate, the administrator may delete your
-        entry.
-      </p>
-      <div className="changeName">
-        <input
-          type="text"
-          maxLength={15}
-          value={newNeme}
-          placeholder="Change name"
-          onChange={handleInputNewName}
-          // value={name}
-        />
-        <button className="btn" onClick={handleChangeName}>
-          Confirm changes
+      {/* SAVE SECTION */}
+      <div className="infoSavePopup" style={{ top: `${positions.infoSave}px` }}>
+        <h3>{congratulation}</h3>
+        <h3>{playerName}</h3>
+        {/* <h3>{difficulty}</h3> */}
+        {/* <h3>{category}</h3> */}
+        <h3>{score} out of 10 correct!</h3>
+        <h3>Do you want to save your score?</h3>
+        <button
+          className="btnGeneral"
+          onClick={saveScore}
+          disabled={confirmSave}
+        >
+          Save and Publish
         </button>
+        <p className="infoBeforeSave">
+          Are you sure you want to publish using this name?
+        </p>
+        <p className="infoBeforeSave">
+          If the name is deemed inappropriate, the administrator may delete your
+          entry.
+        </p>
+        <div className="changeName">
+          <input
+            type="text"
+            maxLength={15}
+            value={newNeme}
+            placeholder="Change name"
+            onChange={handleInputNewName}
+            // value={name}
+          />
+          <button className="btn" onClick={handleChangeName}>
+            Confirm changes
+          </button>
+        </div>
+      </div>
+
+      {/* SAVE MESSAGE CORRECT */}
+      <div className="saveMsgPopup" style={{ top: `${positions.saveMsg}px` }}>
+        <h1>Salvatagio corretto</h1>
+      </div>
+
+      {/* CLASSIFICA DEI PUNTEGGI E NAV */}
+      <div
+        className="scoreListPopup"
+        style={{ top: `${positions.scoreList}px` }}
+      >
+        <h1>Lista punteggi</h1>
+
+        <button className="btnGeneral">Home</button>
+        <button className="btnGeneral">Replay</button>
       </div>
     </div>
   );

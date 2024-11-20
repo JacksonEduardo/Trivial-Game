@@ -166,16 +166,16 @@ const Game = () => {
       >
         {/* popup to have information about match */}
         {openPopup && (
-          <div className="popup">
-            <PopupGame
-              playerName={playerName}
-              difficulty={difficulty}
-              category={category.name}
-              score={score}
-              congratulation={resultCongratulation}
-              randomMode={randomMode}
-            ></PopupGame>
-          </div>
+          // <div className="popup">
+          <PopupGame
+            playerName={playerName}
+            difficulty={difficulty}
+            category={category.name}
+            score={score}
+            congratulation={resultCongratulation}
+            randomMode={randomMode}
+          ></PopupGame>
+          // </div>
         )}
         <section className="allContainerGame">
           {disableBtn && (
