@@ -1,7 +1,6 @@
-// import { useState } from "react";
-
 import "../style/popupGame.css";
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 // to save in Firebase database NoSql
 // import { collection, addDoc } from "firebase/firestore";
@@ -109,6 +108,10 @@ const PopupGame = ({
     fetchScores();
   }, []);
 
+  const handleReplay = () => {
+    window.location.reload();
+  };
+
   if (error) return <p>{error}</p>;
   return (
     <div className="popupGameContainer">
@@ -118,7 +121,26 @@ const PopupGame = ({
             <h2>{congratulation}</h2>
             <h4>{playerName}</h4>
           </div>
-          <h3>Do you want to save your score?</h3>
+          <div>
+            <h4>Do you want to save your score?</h4>
+            <p className="infoBeforeSave">
+              If the name is deemed inappropriate, the administrator may delete
+              your game entry.
+            </p>
+          </div>
+          <div className="changeNameContainer">
+            <input
+              type="text"
+              maxLength={15}
+              value={newNeme}
+              placeholder="Change name"
+              onChange={handleInputNewName}
+              className="inputChangeName"
+            />
+            <button className="btn" onClick={handleChangeName}>
+              Confirm name
+            </button>
+          </div>
         </div>
         <div className="centerCard">
           <div className="leftGame"></div>
@@ -134,24 +156,16 @@ const PopupGame = ({
           <div className="rightGame"></div>
         </div>
         <div className="bottomCard">
-          <div className="changeNameContainer">
-            <p className="infoBeforeSave">
-              Are you sure you want to use this name?
-            </p>
-            <p className="infoBeforeSave">
-              If the name is deemed inappropriate, the administrator may delete
-              your game entry.
-            </p>
-            <input
-              type="text"
-              maxLength={15}
-              value={newNeme}
-              placeholder="Change name"
-              onChange={handleInputNewName}
-            />
-            <button className="btn" onClick={handleChangeName}>
-              Confirm name
+          <div>
+            <button className="btn" onClick={handleReplay}>
+              Try again
             </button>
+            <Link className="noDecoration" to="/difficulty">
+              <button className="btn">New match</button>
+            </Link>
+            <Link className="noDecoration" to={"/"}>
+              <button className="btn">Home</button>
+            </Link>
           </div>
         </div>
       </div>
@@ -168,7 +182,7 @@ const PopupGame = ({
         <h1>Lista punteggi</h1>
 
         <button className="btnGeneral">Home</button>
-        <button className="btnGeneral">Replay</button>
+        <button className="btnGeneral">New match</button>
       </div>
     </div>
 

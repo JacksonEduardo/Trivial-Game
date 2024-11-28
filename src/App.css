@@ -10,7 +10,7 @@ body {
 .btn {
   width: 100px;
   height: 30px;
-  background-color: greenyellow;
+  background-color: rgb(168, 204, 218);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -22,7 +22,7 @@ body {
 
 :root {
   --bgBodyStatic: rgb(37, 90, 74);
-  --text: gold;
+  --text: white;
   --transition: 2s ease;
   --fontTitle: "Galada", cursive;
   /* font-weight: 400; */
@@ -83,8 +83,6 @@ body {
   content: "";
   width: 185px;
   height: 185px;
-  /* border-radius: 50%; */
-  /* background-color: greenyellow; */
   background: rgb(255, 255, 255);
   background: linear-gradient(
     -45deg,
