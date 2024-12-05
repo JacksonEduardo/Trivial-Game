@@ -15,7 +15,7 @@
   width: 100%;
   min-height: 100vh;
   max-height: fit-content;
-  /* transition: var(--transition); */
+  transition: var(--transition);
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
@@ -111,7 +111,12 @@
   margin: 20px;
   padding: 10px;
   border-radius: 10px;
-  background-color: rgb(241, 202, 155);
+  background: rgb(95, 158, 160);
+  background: linear-gradient(
+    164deg,
+    rgba(232, 240, 233) 51%,
+    rgba(211, 226, 213) 42%
+  );
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.177);
   transition: max-height 1.5s ease-in, padding 1.5s ease-in;
 }
@@ -143,7 +148,7 @@
   border: 1px solid rgba(25, 24, 24, 0.18);
 }
 .colorWrong {
-  background: rgba(227, 5, 5, 0.77);
+  background: rgba(235, 49, 1, 0.77);
 }
 .colorCorrect {
   background-color: rgba(0, 128, 0, 0.77);
@@ -184,7 +189,7 @@
 .custom-radio {
   width: 20px;
   height: 20px;
-  border: 2px solid #007bff;
+  border: 2px solid rgb(245, 112, 16);
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
@@ -225,7 +230,7 @@
 .btnConfirmAnswerHiden {
   width: 180px;
   height: 130px;
-  background-color: plum;
+  background-color: rgb(34, 34, 59);
   border: none;
   border-radius: 10px;
   position: absolute;
@@ -233,6 +238,7 @@
   top: 20px;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
   cursor: pointer;
+  color: white;
 }
 .btnConfirmAnswerView {
   right: -40px;

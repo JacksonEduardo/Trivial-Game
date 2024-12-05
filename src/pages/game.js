@@ -260,7 +260,7 @@ const Game = () => {
                           !isAnswerSelected[index] || confirmedAnswers[index]
                         }
                       >
-                        Confirm answer
+                        Confirm
                       </button>
                     )}
                   </div>
