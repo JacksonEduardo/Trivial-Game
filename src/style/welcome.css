@@ -4,7 +4,6 @@
   background-color: var(--bgBody);
   transition: var(--transition);
   position: relative;
-  color: var(--text);
   overflow: hidden;
 }
 .mascotteAlert {
@@ -61,16 +60,7 @@
   animation: cardOne 2s ease forwards;
   background-color: rgb(136, 171, 165);
 }
-/* .One::before {
-  content: "";
-  width: 90%;
-  height: 25px;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: rgb(54, 51, 51);
-  border-radius: 30px;
-  } */
+
 .Two {
   background-color: rgb(211, 226, 213);
   animation: cardTwo 2s ease forwards;
@@ -136,26 +126,7 @@
   top: -40px;
   transition: 1s ease-in-out top;
 }
-/* .msgAlert {
-  width: 200px;
-  height: fit-content;
-  background-color: red;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  border-radius: 0 0 10px 10px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.msgAlertOpen {
-  top: 80px;
-  transition: 0.5s ease-in-out top;
-}
-.msgAlertClose {
-  top: -50px;
-  transition: 1s ease-in-out top;
-} */
+
 .welcomeSection {
   width: 100%;
   height: 100%;
@@ -276,6 +247,13 @@
 .titleDown {
   width: fit-content;
   height: 100px;
+}
+h1 {
+  color: rgb(34, 34, 59); /* Colore interno del testo */
+  text-shadow: 1px 1px 0 rgb(245, 112, 16),
+    /* Ombra in basso a destra */ -1px -1px 0 white,
+    /* Ombra in alto a sinistra */ 1px -1px 0 white,
+    /* Ombra in alto a destra */ -1px 1px 0 white; /* Ombra in basso a sinistra */
 }
 .test2 {
   width: 200px;

@@ -18,11 +18,8 @@
 .logoTitle {
   width: 80px;
   height: 100%;
-  /* background-color: aqua; */
   text-align: center;
-  /* display: flex;
-  align-items: center;
-  justify-content: space-between; */
+
   margin: auto;
 }
 .logo {
@@ -31,14 +28,12 @@
 .logoEmpanada {
   width: 80px;
   height: 45px;
-  /* background-color: aqua; */
   background-image: url(../mediaSvg/empanada.svg);
   background-size: cover;
 }
 .containerIconTheme {
   width: 60px;
   height: 60px;
-  /* background-color: aqua; */
   cursor: pointer;
 }
 .test {

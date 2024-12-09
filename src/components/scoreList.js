@@ -71,7 +71,7 @@ const ScoreList = () => {
                 <p>{el.randomMode ? el.score + 2 : ""}</p>
               </div>
               <div className="geniousInfo">
-                <p>{el.randomMode ? "Random mode +2pts" : "Normal mode"}</p>
+                <p>{el.randomMode ? "Random mode +2pts" : ""}</p>
               </div>
             </div>
           </div>

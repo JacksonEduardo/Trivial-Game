@@ -189,7 +189,7 @@
 .custom-radio {
   width: 20px;
   height: 20px;
-  border: 2px solid rgb(245, 112, 16);
+  border: 2px solid rgb(15, 100, 90);
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
@@ -231,7 +231,7 @@
   width: 180px;
   height: 130px;
   background-color: rgb(34, 34, 59);
-  border: none;
+  border: solid 2px rgb(245, 112, 16);
   border-radius: 10px;
   position: absolute;
   right: 50px;
