@@ -218,7 +218,8 @@ const Game = () => {
                     {/* Banner wrong answer */}
                     {confirmedAnswers[index] && msgResult[index] === false && (
                       <div className="colorWrong bannerResult">
-                        <h3>Correct answer: {el.correct_answer}</h3>
+                        <h4>Correct answer</h4>
+                        <h2>{el.correct_answer}</h2>
                       </div>
                     )}
 
