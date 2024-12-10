@@ -206,6 +206,13 @@
 .titleDown {
   position: relative;
 }
+.trivalTitle {
+  color: rgb(34, 34, 59); /* Colore interno del testo */
+  text-shadow: 1px 1px 0 var(--text),
+    /* Ombra in basso a destra */ -1px -1px 0 white,
+    /* Ombra in alto a sinistra */ 1px -1px 0 white,
+    /* Ombra in alto a destra */ -1px 1px 0 white; /* Ombra in basso a sinistra */
+}
 .lineFlash {
   width: 35px;
   height: 5px;
@@ -248,13 +255,7 @@
   width: fit-content;
   height: 100px;
 }
-h1 {
-  color: rgb(34, 34, 59); /* Colore interno del testo */
-  text-shadow: 1px 1px 0 rgb(245, 112, 16),
-    /* Ombra in basso a destra */ -1px -1px 0 white,
-    /* Ombra in alto a sinistra */ 1px -1px 0 white,
-    /* Ombra in alto a destra */ -1px 1px 0 white; /* Ombra in basso a sinistra */
-}
+
 .test2 {
   width: 200px;
   height: 200px;

@@ -70,16 +70,7 @@ const Welcome = () => {
     setAnimation(false);
   }, 3000);
 
-  // if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
-
-  // code to open score list
-
-  // this method is used only when have only one btn action
-  // function openClose() {
-  //   setIsOpen((prev) => !prev);
-  //   console.log("click per aprire");
-  // }
 
   return (
     <main className="welcomeContainer">
@@ -112,12 +103,12 @@ const Welcome = () => {
             </div>
           ) : null}
           <div className="titleUp">
-            <h1>Trivial</h1>
+            <h1 className="trivalTitle">Trivial</h1>
           </div>
           <div className="titleDown">
             {animation ? <div className="lineFlash"></div> : null}
-            {!animation && <h1 className="hiddenE">e</h1>}
-            <h1>Gam</h1>
+            {!animation && <h1 className="hiddenE  trivalTitle">e</h1>}
+            <h1 className="trivalTitle">Gam</h1>
           </div>
         </div>
         <div className={`test2 ${animation ? "" : "nameInputContainer"}`}>
