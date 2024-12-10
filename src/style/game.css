@@ -74,7 +74,8 @@
 }
 
 .bgCatLevGame {
-  min-width: fit-content;
+  min-width: 100%;
+  text-align: center;
   padding: 10px;
   margin: 10px;
   height: fit-content;
@@ -231,12 +232,15 @@
   width: 180px;
   height: 130px;
   background-color: rgb(34, 34, 59);
-  border: solid 2px rgb(245, 112, 16);
+  box-shadow: 1px 1px 0 var(--text),
+    /* Ombra in basso a destra */ -1px -1px 0 white,
+    /* Ombra in alto a sinistra */ 1px -1px 0 white,
+    /* Ombra in alto a destra */ -1px 1px 0 white; /* Ombra in basso a sinistra */
   border-radius: 10px;
   position: absolute;
   right: 50px;
   top: 20px;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  /* box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5); */
   cursor: pointer;
   color: white;
 }
@@ -271,6 +275,10 @@
     bottom: 15px;
     right: 50%;
     transform: translateX(50%);
+    box-shadow: 1px 1px 0 var(--text),
+      /* Ombra in basso a destra */ -1px -1px 0 white,
+      /* Ombra in alto a sinistra */ 1px -1px 0 white,
+      /* Ombra in alto a destra */ -1px 1px 0 white;
   }
   .btnConfirmAnswerView {
     bottom: -25px;
