@@ -6,6 +6,12 @@
   position: relative;
   overflow: hidden;
 }
+.bgGlobalBlack {
+  background-image: url(../mediaSvg/bgGameBlack.svg);
+}
+.bgGlobalWhite {
+  background-image: url(../mediaSvg/bgGameWhite.svg);
+}
 .mascotteAlert {
   width: 180px;
   height: 100px;
@@ -364,13 +370,7 @@
 
   border-radius: 5px 5px 0 0;
 }
-.dataUser {
-  padding: 5px 0;
-  border-radius: 0 5px 5px 5px;
-  background-color: var(--nav);
-  display: flex;
-  justify-content: space-around;
-}
+
 .categoryInfo {
   width: 55%;
   padding: 5px;

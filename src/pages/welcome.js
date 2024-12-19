@@ -136,39 +136,3 @@ const Welcome = () => {
 };
 
 export default Welcome;
-
-// {loading ? (
-//   <p>Loading</p>
-// ) : (
-//   <section
-//     className={`scoreList ${isOpen ? "scoreListOpen" : "scoreListClose"}`}
-//     onClick={openClose}
-//   >
-//     <div className="openCloseList">
-//       {/* empty, only to contein icon to close and open */}
-//     </div>
-//     <div className="btnTitleTable">
-//       <h2>Best Scores</h2>
-//       {scores.map((el) => (
-//         <div key={el.id} className="infoScoreContainer">
-//           <h3 className="nameUser">{el.name}</h3>
-//           <div className="dataUser">
-//             <div className="categoryInfo">
-//               <p>{el.category}</p>
-//             </div>
-//             <div className="dificultyInfo">
-//               <p>{el.difficulty}</p>
-//             </div>
-//             <div className="scoreInfo">
-//               <p>{el.score}/10</p>
-//               <p>{el.randomMode ? el.score + 2 : ""}</p>
-//             </div>
-//             <div className="geniousInfo">
-//               <p>{el.randomMode ? "Random mode +2pts" : "Normal mode"}</p>
-//             </div>
-//           </div>
-//         </div>
-//       ))}
-//     </div>
-//   </section>
-// )}

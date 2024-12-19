@@ -204,6 +204,7 @@ const Game = () => {
             </div>
           )}
           <div className="cardContainer">
+            {cardGame ? <div className="circleScore">{score}</div> : ""}
             {mixedData &&
               mixedData.map((el, index) => {
                 return (

@@ -23,6 +23,7 @@
   margin: auto;
 }
 .logo {
+  color: rgb(232, 240, 233);
   font-family: var(--fontTitle);
 }
 .logoEmpanada {
