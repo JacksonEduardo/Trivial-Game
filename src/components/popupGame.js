@@ -171,7 +171,7 @@ const PopupGame = ({
       </div>
       {/* SAVE MESSAGE CORRECT */}
       <div className="saveMsgPopup" style={{ top: `${positions.saveMsg}px` }}>
-        <h1>Salvatagio corretto</h1>
+        <h1>Successful Save</h1>
       </div>
 
       {/* CLASSIFICA DEI PUNTEGGI E NAV */}
@@ -179,7 +179,7 @@ const PopupGame = ({
         className="scoreListPopup"
         style={{ top: `${positions.scoreList}px` }}
       >
-        <h1>Lista punteggi</h1>
+        <h1>Score List</h1>
 
         <button className="btnGeneral">Home</button>
         <button className="btnGeneral">New match</button>
